@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Edit Question — QuizCraft</title>
+<meta name="description" content="Edit an existing question in your QuizCraft question bank." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/question.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-require-role="faculty">
+
+<div class="qc-bg-layer">
+  <div class="qc-bg-grid"></div>
+  <div class="qc-blur-circle qc-blur-1"></div>
+  <div class="qc-blur-circle qc-blur-2"></div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="qc-navbar" id="qcNavbar">
+  <div class="container qc-navbar-inner">
+    <a href="index.html" class="qc-logo">
+      <span class="qc-logo-mark">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#eqLogoGrad)"/>
+          <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+          <defs><linearGradient id="eqLogoGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+        </svg>
+      </span>
+      <span>Quiz<span class="qc-grad-word">Craft</span></span>
+    </a>
+
+    <button class="qc-burger d-lg-none" id="qcBurger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+
+    <div class="qc-nav-links" id="qcNavLinks">
+      <a href="faculty_dashboard.html">Dashboard</a>
+      <a href="manage_questions.html">Manage Questions</a>
+      <a href="add_question.html">Add Question</a>
+      <a href="view_results.html">Results</a>
+      <a href="profile.html">Profile</a>
+    </div>
+
+    <div class="qc-nav-actions">
+      <button class="qc-theme-toggle" id="qcThemeToggle" aria-label="Toggle dark mode"><i class="bi bi-moon-stars-fill"></i></button>
+      <a href="profile.html" class="qc-nav-avatar" title="Account">U</a>
+      <button class="qc-nav-icon-btn qc-hide-sm-down" id="qcLogoutBtn" aria-label="Logout" title="Logout"><i class="bi bi-box-arrow-right"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ PAGE HEADER ============ -->
+<section class="qp-page-header">
+  <div class="container">
+    <div class="qp-page-header-inner" data-aos="fade-up">
+      <div>
+        <h1>Edit <span class="qc-grad-word">Question</span></h1>
+        <p>Update the details below and save your changes.</p>
+      </div>
+      <div class="qp-page-actions">
+        <a href="manage_questions.html" class="qc-btn qc-btn-outline qc-ripple"><i class="bi bi-arrow-left"></i> Back to Questions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORM ============ -->
+<section class="qc-section" style="padding-top:24px;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+
+        <div class="qc-alert qc-badge qc-badge-green d-none" id="eqSuccessAlert" style="width:100%; padding:14px 18px; margin-bottom:20px; justify-content:flex-start;">
+          <i class="bi bi-check-circle-fill"></i> Question updated successfully.
+        </div>
+
+        <div class="qc-card qp-form-card" data-aos="fade-up">
+          <form id="questionForm" novalidate data-mode="edit">
+            <!-- BUG FIX: this hidden field + every value= below used to
+                 be hardcoded sample data, so every question you opened
+                 to edit displayed the exact same "range(2,10,2)" example
+                 instead of the question you actually clicked Edit on.
+                 js/faculty.js now reads the real id from the URL query
+                 string (edit_question.html?id=...) and fetches/fills
+                 these fields from the backend on page load instead. -->
+            <input type="hidden" id="qQuestionId" name="question_id" value="">
+
+            <p class="qp-form-section-title"><i class="bi bi-patch-question"></i> Question Details</p>
+
+            <div class="qp-field">
+              <label class="qp-label" for="qQuestionText">Question <span class="required">*</span></label>
+              <textarea class="qp-textarea" id="qQuestionText" name="question_text" placeholder="e.g. What does range(2, 10, 2) generate?" required></textarea>
+              <div class="qp-error" id="qQuestionTextError"></div>
+            </div>
+
+            <p class="qp-form-section-title"><i class="bi bi-list-check"></i> Answer Options</p>
+
+            <div class="qp-options-grid">
+              <div class="qp-field qp-option-field">
+                <label class="qp-label" for="qOptionA">Option A <span class="required">*</span></label>
+                <span class="qp-option-letter">A</span>
+                <input type="text" class="qp-input" id="qOptionA" name="option_a" placeholder="Enter option A" required>
+              </div>
+              <div class="qp-field qp-option-field">
+                <label class="qp-label" for="qOptionB">Option B <span class="required">*</span></label>
+                <span class="qp-option-letter">B</span>
+                <input type="text" class="qp-input" id="qOptionB" name="option_b" placeholder="Enter option B" required>
+              </div>
+              <div class="qp-field qp-option-field">
+                <label class="qp-label" for="qOptionC">Option C <span class="required">*</span></label>
+                <span class="qp-option-letter">C</span>
+                <input type="text" class="qp-input" id="qOptionC" name="option_c" placeholder="Enter option C" required>
+              </div>
+              <div class="qp-field qp-option-field">
+                <label class="qp-label" for="qOptionD">Option D <span class="required">*</span></label>
+                <span class="qp-option-letter">D</span>
+                <input type="text" class="qp-input" id="qOptionD" name="option_d" placeholder="Enter option D" required>
+              </div>
+            </div>
+
+            <div class="qp-field">
+              <label class="qp-label">Correct Answer <span class="required">*</span></label>
+              <div class="qp-correct-answer-group" id="qCorrectAnswerGroup">
+                <label class="qp-correct-radio"><input type="radio" name="correct_answer" value="A"> Option A</label>
+                <label class="qp-correct-radio"><input type="radio" name="correct_answer" value="B"> Option B</label>
+                <label class="qp-correct-radio"><input type="radio" name="correct_answer" value="C"> Option C</label>
+                <label class="qp-correct-radio"><input type="radio" name="correct_answer" value="D"> Option D</label>
+              </div>
+              <div class="qp-error" id="qCorrectAnswerError"></div>
+            </div>
+
+            <p class="qp-form-section-title"><i class="bi bi-sliders"></i> Classification</p>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="qp-field">
+                  <label class="qp-label" for="qSubject">Subject <span class="required">*</span></label>
+                  <select class="qp-select" id="qSubject" name="subject" required>
+                    <option value="" disabled selected>Select subject</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                    <option value="cpp">C++</option>
+                    <option value="webdev">Web Development</option>
+                    <option value="dbms">DBMS</option>
+                    <option value="ml">Machine Learning</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="qp-field">
+                  <label class="qp-label" for="qDifficulty">Difficulty <span class="required">*</span></label>
+                  <select class="qp-select" id="qDifficulty" name="difficulty" required>
+                    <option value="" disabled selected>Select difficulty</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="qp-field">
+                  <label class="qp-label" for="qMarks">Marks <span class="required">*</span></label>
+                  <input type="number" class="qp-input" id="qMarks" name="marks" min="1" max="20" value="1" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="qp-field">
+              <label class="qp-label" for="qExplanation">Explanation <span style="color:var(--text-muted); font-weight:500;">(shown after the student answers)</span></label>
+              <textarea class="qp-textarea" id="qExplanation" name="explanation" placeholder="Briefly explain why the correct answer is right…"></textarea>
+            </div>
+
+            <p class="qp-form-section-title"><i class="bi bi-image"></i> Attachment (optional)</p>
+
+            <div class="qp-field">
+              <div class="qp-upload-box" id="qUploadBox">
+                <i class="bi bi-cloud-arrow-up"></i>
+                <p>Click or drag an image here to upload</p>
+                <span>PNG, JPG up to 5MB — UI only, not persisted</span>
+                <input type="file" id="qImageUpload" accept="image/*">
+              </div>
+              <div class="qp-upload-preview" id="qUploadPreview">
+                <img id="qUploadPreviewImg" src="" alt="Preview">
+                <span class="name" id="qUploadPreviewName">filename.png</span>
+                <button type="button" class="remove-btn" id="qUploadRemoveBtn" aria-label="Remove image"><i class="bi bi-x-circle-fill"></i></button>
+              </div>
+            </div>
+
+            <div class="qp-form-actions">
+              <button type="submit" class="qc-btn qc-btn-primary qc-ripple" id="qSaveBtn"><i class="bi bi-save"></i> Update Question</button>
+              <a href="manage_questions.html" class="qc-btn qc-btn-outline qc-ripple"><i class="bi bi-x-circle"></i> Cancel</a>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="qc-footer">
+  <div class="container">
+    <div class="qc-footer-bottom">
+      <p>© <span id="qcYear"></span> QuizCraft. All rights reserved.</p>
+      <p>Designed for smarter learning.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+<script src="js/common.js"></script>
+<script src="js/faculty.js"></script>
+</body>
+</html>

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>QuizCraft — Learn Smarter with Adaptive Quizzes</title>
+<meta name="description" content="QuizCraft is an adaptive quiz platform that adjusts difficulty in real time, tracks your performance, and helps you master subjects faster." />
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ BACKGROUND LAYERS ============ -->
+<div class="bg-layer">
+  <div class="grid-pattern"></div>
+  <div class="blur-circle circle-1"></div>
+  <div class="blur-circle circle-2"></div>
+  <div class="blur-circle circle-3"></div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="qc-navbar" id="qcNavbar">
+  <div class="container qc-navbar-inner">
+    <a href="#home" class="qc-logo">
+      <span class="qc-logo-mark">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#logoGrad)"/>
+          <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#2563EB"/>
+              <stop offset="1" stop-color="#7C3AED"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      <span class="qc-logo-text">Quiz<span class="grad-word">Craft</span></span>
+    </a>
+
+    <button class="qc-burger d-lg-none" id="qcBurger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="qc-nav-links" id="qcNavLinks">
+      <a href="#home" class="active">Home</a>
+      <a href="#features">Features</a>
+      <a href="#subjects">Subjects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="qc-nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <i class="bi bi-moon-stars-fill"></i>
+      </button>
+      <a href="loginpage1.html" class="btn-nav-login">Log in</a>
+      <a href="registerpage1.html" class="btn-nav-register">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="home">
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path fill="url(#waveGrad)" fill-opacity="1" d="M0,96L48,106.7C96,117,192,139,288,138.7C384,139,480,117,576,101.3C672,85,768,75,864,85.3C960,96,1056,128,1152,138.7C1248,149,1344,139,1392,133.3L1440,128L1440,220L1392,220C1344,220,1248,220,1152,220C1056,220,960,220,864,220C768,220,672,220,576,220C480,220,384,220,288,220C192,220,96,220,48,220L0,220Z"></path>
+      <defs>
+        <linearGradient id="waveGrad" x1="0" y1="0" x2="1440" y2="0" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#2563EB" stop-opacity="0.06"/>
+          <stop offset="0.5" stop-color="#7C3AED" stop-opacity="0.08"/>
+          <stop offset="1" stop-color="#06B6D4" stop-opacity="0.06"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <div class="container hero-inner">
+    <div class="row align-items-center gy-5">
+
+      <!-- LEFT -->
+      <div class="col-lg-6 hero-left" data-reveal>
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          AI Powered Learning
+        </div>
+
+        <h1 class="hero-heading">
+          Learn Smarter with <br class="d-none d-md-block">
+          <span class="gradient-text" id="typingTarget">Adaptive Quizzes</span>
+        </h1>
+
+        <p class="hero-para">
+          QuizCraft studies how you answer — not just what you answer — and
+          reshapes every quiz in real time. Struggle with a topic and the
+          engine slows down to reinforce it; master it, and the difficulty
+          climbs to keep you sharp. It's a study partner that actually pays attention.
+        </p>
+
+        <div class="hero-btns">
+          <a href="#subjects" class="btn-primary-grad ripple">
+            Start Learning <i class="bi bi-arrow-right"></i>
+          </a>
+          <a href="#features" class="btn-outline-glass ripple">
+            <i class="bi bi-play-circle"></i> Explore Features
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <h3><span class="counter" data-target="5000">0</span>+</h3>
+            <p>Students</p>
+          </div>
+          <div class="stat-item">
+            <h3><span class="counter" data-target="12000">0</span>+</h3>
+            <p>Quiz Attempts</p>
+          </div>
+          <div class="stat-item">
+            <h3><span class="counter" data-target="1000">0</span>+</h3>
+            <p>Questions</p>
+          </div>
+          <div class="stat-item">
+            <h3><span class="counter" data-target="100">0</span>+</h3>
+            <p>Faculty</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: DASHBOARD MOCKUP -->
+      <div class="col-lg-6" data-reveal data-reveal-delay="150">
+        <div class="dashboard-stage">
+
+          <!-- Main quiz card -->
+          <div class="dash-card main-quiz-card float-slow">
+            <div class="dash-card-head">
+              <div class="dash-avatar">
+                <i class="bi bi-lightning-charge-fill"></i>
+              </div>
+              <div>
+                <p class="dash-title">Python · Loops &amp; Iteration</p>
+                <p class="dash-sub">Question 7 of 12</p>
+              </div>
+              <span class="dash-badge badge-medium">Medium</span>
+            </div>
+
+            <div class="dash-question">
+              What does <code>range(2, 10, 2)</code> generate?
+            </div>
+
+            <div class="dash-options">
+              <div class="dash-opt correct">
+                <span>A</span> 2, 4, 6, 8
+                <i class="bi bi-check-circle-fill"></i>
+              </div>
+              <div class="dash-opt">
+                <span>B</span> 2, 3, 4, 5, 6, 7, 8, 9
+              </div>
+              <div class="dash-opt">
+                <span>C</span> 0, 2, 4, 6, 8, 10
+              </div>
+            </div>
+
+            <div class="dash-timer-row">
+              <div class="timer-ring">
+                <svg viewBox="0 0 40 40">
+                  <circle cx="20" cy="20" r="16" class="ring-bg"/>
+                  <circle cx="20" cy="20" r="16" class="ring-fg"/>
+                </svg>
+                <span>14s</span>
+              </div>
+              <div class="score-pill">
+                <i class="bi bi-star-fill"></i> Score 860
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress card -->
+          <div class="dash-card float-card progress-card float-med">
+            <p class="mini-label">Overall Progress</p>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill"></div>
+            </div>
+            <p class="mini-value">78% mastered</p>
+          </div>
+
+          <!-- Pie chart / analytics card -->
+          <div class="dash-card float-card pie-card float-fast">
+            <p class="mini-label">Accuracy</p>
+            <div class="pie-wrap">
+              <svg viewBox="0 0 36 36" class="pie-chart">
+                <path class="pie-bg" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                <path class="pie-fg" stroke-dasharray="82, 100" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+              </svg>
+              <span class="pie-value">82%</span>
+            </div>
+          </div>
+
+          <!-- Difficulty badge floating -->
+          <div class="dash-card float-card diff-card float-med">
+            <i class="bi bi-graph-up-arrow"></i>
+            <div>
+              <p class="mini-label m-0">Difficulty rising</p>
+              <p class="mini-value m-0">Hard unlocked</p>
+            </div>
+          </div>
+
+          <!-- Analytics bars -->
+          <div class="dash-card float-card bars-card float-slow">
+            <p class="mini-label">Weekly Activity</p>
+            <div class="mini-bars">
+              <span style="--h:40%"></span>
+              <span style="--h:65%"></span>
+              <span style="--h:50%"></span>
+              <span style="--h:90%"></span>
+              <span style="--h:70%"></span>
+              <span style="--h:100%"></span>
+              <span style="--h:60%"></span>
+            </div>
+          </div>
+
+          <div class="glow-blob"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- ============ FEATURES ============ -->
+<section class="section-features" id="features">
+  <div class="container">
+    <div class="section-heading" data-reveal>
+      <span class="eyebrow">Capabilities</span>
+      <h2>Why Choose <span class="grad-word">QuizCraft</span></h2>
+      <p>Every part of the platform is built around one idea: the quiz should adapt to you, not the other way around.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-reveal>
+        <div class="feature-card">
+          <div class="feature-icon icon-blue"><i class="bi bi-cpu"></i></div>
+          <h4>Adaptive Quiz Engine</h4>
+          <p>Our engine reads your answer patterns and reshapes the next question set in real time, keeping you in your optimal challenge zone.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-reveal data-reveal-delay="80">
+        <div class="feature-card">
+          <div class="feature-icon icon-purple"><i class="bi bi-bar-chart-steps"></i></div>
+          <h4>Difficulty Based Scoring</h4>
+          <p>Harder questions earn more points. Scoring reflects genuine mastery, not just the number of correct guesses.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-reveal data-reveal-delay="160">
+        <div class="feature-card">
+          <div class="feature-icon icon-cyan"><i class="bi bi-stopwatch"></i></div>
+          <h4>Live Timer</h4>
+          <p>A gentle countdown keeps recall sharp and simulates real exam pressure without the anxiety of a hard cutoff.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-reveal>
+        <div class="feature-card">
+          <div class="feature-icon icon-blue"><i class="bi bi-graph-up"></i></div>
+          <h4>Performance Analytics</h4>
+          <p>Topic-wise heatmaps and trend lines show exactly where you're improving and where to focus next.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-reveal data-reveal-delay="80">
+        <div class="feature-card">
+          <div class="feature-icon icon-purple"><i class="bi bi-collection"></i></div>
+          <h4>Multiple Subjects</h4>
+          <p>From programming languages to core CS subjects, switch tracks anytime without losing your progress history.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-reveal data-reveal-delay="160">
+        <div class="feature-card">
+          <div class="feature-icon icon-cyan"><i class="bi bi-lightning-charge"></i></div>
+          <h4>Instant Results</h4>
+          <p>See your score, accuracy and a full answer breakdown the second you submit — no waiting, no guessing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POPULAR SUBJECTS ============ -->
+<section class="section-subjects" id="subjects">
+  <div class="container">
+    <div class="section-heading" data-reveal>
+      <span class="eyebrow">Explore</span>
+      <h2>Popular <span class="grad-word">Subjects</span></h2>
+      <p>Pick a track. The engine adapts to your pace from the very first question.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-6 col-md-4 col-lg-2" data-reveal>
+        <div class="subject-card subj-python">
+          <i class="bi bi-filetype-py"></i>
+          <h6>Python</h6>
+          <span>210 Qs</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-reveal data-reveal-delay="60">
+        <div class="subject-card subj-java">
+          <i class="bi bi-cup-hot-fill"></i>
+          <h6>Java</h6>
+          <span>180 Qs</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-reveal data-reveal-delay="120">
+        <div class="subject-card subj-cpp">
+          <i class="bi bi-braces-asterisk"></i>
+          <h6>C++</h6>
+          <span>165 Qs</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-reveal data-reveal-delay="180">
+        <div class="subject-card subj-web">
+          <i class="bi bi-globe2"></i>
+          <h6>Web Dev</h6>
+          <span>240 Qs</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-reveal data-reveal-delay="240">
+        <div class="subject-card subj-dbms">
+          <i class="bi bi-database-fill"></i>
+          <h6>DBMS</h6>
+          <span>150 Qs</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-reveal data-reveal-delay="300">
+        <div class="subject-card subj-ml">
+          <i class="bi bi-diagram-3-fill"></i>
+          <h6>Machine Learning</h6>
+          <span>135 Qs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section-how" id="how">
+  <div class="container">
+    <div class="section-heading" data-reveal>
+      <span class="eyebrow">Process</span>
+      <h2>How It <span class="grad-word">Works</span></h2>
+      <p>Six steps between you and a quiz that's tuned exactly to your level.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-line"></div>
+
+      <div class="timeline-step" data-reveal>
+        <div class="timeline-dot">01</div>
+        <h5>Register</h5>
+        <p>Create your free QuizCraft account in under a minute.</p>
+      </div>
+      <div class="timeline-step" data-reveal data-reveal-delay="80">
+        <div class="timeline-dot">02</div>
+        <h5>Log in</h5>
+        <p>Access your personal dashboard and saved progress.</p>
+      </div>
+      <div class="timeline-step" data-reveal data-reveal-delay="160">
+        <div class="timeline-dot">03</div>
+        <h5>Select Subject</h5>
+        <p>Choose from programming languages or core CS tracks.</p>
+      </div>
+      <div class="timeline-step" data-reveal data-reveal-delay="240">
+        <div class="timeline-dot">04</div>
+        <h5>Start Quiz</h5>
+        <p>Jump into a timed round built around your current level.</p>
+      </div>
+      <div class="timeline-step" data-reveal data-reveal-delay="320">
+        <div class="timeline-dot">05</div>
+        <h5>Adaptive Questions</h5>
+        <p>Difficulty shifts after every answer, in real time.</p>
+      </div>
+      <div class="timeline-step" data-reveal data-reveal-delay="400">
+        <div class="timeline-dot">06</div>
+        <h5>Results</h5>
+        <p>Get a full breakdown with topic-wise accuracy instantly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section-testimonials" id="about">
+  <div class="container">
+    <div class="section-heading" data-reveal>
+      <span class="eyebrow">Testimonials</span>
+      <h2>Loved by <span class="grad-word">Learners</span></h2>
+      <p>A few words from students who've made adaptive practice part of their routine.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-4" data-reveal>
+        <div class="testimonial-card">
+          <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <p>"The difficulty curve genuinely tracks how I'm doing. I stopped wasting time on questions I'd already mastered."</p>
+          <div class="testimonial-user">
+            <div class="avatar-placeholder">AS</div>
+            <div>
+              <h6>Ananya Sharma</h6>
+              <span>B.Tech, Computer Science</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4" data-reveal data-reveal-delay="100">
+        <div class="testimonial-card">
+          <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <p>"Analytics showed me DBMS was my weak spot before my own mock tests did. Fixed it two weeks before finals."</p>
+          <div class="testimonial-user">
+            <div class="avatar-placeholder">RK</div>
+            <div>
+              <h6>Rohit Kulkarni</h6>
+              <span>MCA, Final Year</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4" data-reveal data-reveal-delay="200">
+        <div class="testimonial-card">
+          <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></div>
+          <p>"The instant results with a full breakdown make the fifteen-minute daily habit actually stick."</p>
+          <div class="testimonial-user">
+            <div class="avatar-placeholder">PM</div>
+            <div>
+              <h6>Priya Menon</h6>
+              <span>B.Sc, Data Science</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section-faq">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5" data-reveal>
+        <span class="eyebrow">Support</span>
+        <h2 class="faq-heading">Frequently Asked <span class="grad-word">Questions</span></h2>
+        <p class="faq-sub">Can't find what you're looking for? Reach out on the contact form below and we'll get back within a day.</p>
+      </div>
+
+      <div class="col-lg-7" data-reveal data-reveal-delay="100">
+        <div class="accordion qc-accordion" id="faqAccordion">
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                How does the adaptive difficulty actually work?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Each answer feeds a running skill estimate for that topic. Get a question right and the next one steps up in difficulty; get it wrong and the engine backs off to reinforce the concept before trying again.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                Is QuizCraft free to use?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes. Core subjects, unlimited quiz attempts and your personal analytics dashboard are free for every registered student.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                Which subjects are currently supported?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Python, Java, C++, Web Development, DBMS and Machine Learning today, with new tracks added every term based on student demand.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                Can faculty track student performance?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Faculty accounts get a cohort-level view of topic mastery and attempt history, so you can see exactly where a class needs review.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="section-newsletter" id="contact">
+  <div class="container">
+    <div class="newsletter-box" data-reveal>
+      <h2>Get quiz tips &amp; new subjects in your inbox</h2>
+      <p>One short email a month. No spam, unsubscribe anytime.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="you@example.com" required id="newsletterEmail">
+        <button type="submit" class="ripple">Subscribe</button>
+      </form>
+      <p class="newsletter-msg" id="newsletterMsg"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="qc-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <a href="#home" class="qc-logo mb-3 d-inline-flex">
+          <span class="qc-logo-mark">
+            <svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#logoGrad2)"/>
+              <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+              <defs>
+                <linearGradient id="logoGrad2" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#2563EB"/>
+                  <stop offset="1" stop-color="#7C3AED"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+          <span class="qc-logo-text">Quiz<span class="grad-word">Craft</span></span>
+        </a>
+        <p class="footer-about">Adaptive quizzes that adjust to your level in real time — built to make focused practice a daily habit.</p>
+        <div class="footer-socials">
+          <a href="#"><i class="bi bi-twitter-x"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-github"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <h6 class="footer-title">Quick Links</h6>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#subjects">Subjects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <h6 class="footer-title">Subjects</h6>
+        <ul class="footer-links">
+          <li><a href="#subjects">Python</a></li>
+          <li><a href="#subjects">Java</a></li>
+          <li><a href="#subjects">Web Development</a></li>
+          <li><a href="#subjects">DBMS</a></li>
+          <li><a href="#subjects">Machine Learning</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <h6 class="footer-title">Contact</h6>
+        <ul class="footer-links">
+          <li><i class="bi bi-envelope"></i> hello@quizcraft.app</li>
+          <li><i class="bi bi-telephone"></i> +91 98765 43210</li>
+          <li><i class="bi bi-geo-alt"></i> Mumbai, Maharashtra, India</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="footer-divider">
+
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> QuizCraft. All rights reserved.</p>
+      <p>Designed for smarter learning.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

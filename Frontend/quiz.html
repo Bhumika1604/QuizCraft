@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Take Quiz — QuizCraft</title>
+<meta name="description" content="Adaptive quiz in progress on QuizCraft." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/quiz.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-require-role="student">
+
+<div class="qc-bg-layer">
+  <div class="qc-bg-grid"></div>
+  <div class="qc-blur-circle qc-blur-1"></div>
+  <div class="qc-blur-circle qc-blur-2"></div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="qc-navbar" id="qcNavbar">
+  <div class="container qc-navbar-inner">
+    <a href="index.html" class="qc-logo">
+      <span class="qc-logo-mark">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#quizLogoGrad)"/>
+          <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+          <defs><linearGradient id="quizLogoGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+        </svg>
+      </span>
+      <span>Quiz<span class="qc-grad-word">Craft</span></span>
+    </a>
+
+    <button class="qc-burger d-lg-none" id="qcBurger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+
+    <div class="qc-nav-links" id="qcNavLinks">
+      <a href="student_dashboard.html">Dashboard</a>
+      <a href="quiz.html" class="active">Take a Quiz</a>
+      <a href="history.html">History</a>
+      <a href="subjects.html">Subjects</a>
+      <a href="profile.html">Profile</a>
+    </div>
+
+    <div class="qc-nav-actions">
+      <button class="qc-theme-toggle" id="qcThemeToggle" aria-label="Toggle dark mode"><i class="bi bi-moon-stars-fill"></i></button>
+      <a href="student_dashboard.html" class="qc-nav-avatar" title="Account">U</a>
+      <button class="qc-nav-icon-btn qc-hide-sm-down" id="qcLogoutBtn" aria-label="Logout" title="Logout"><i class="bi bi-box-arrow-right"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ QUIZ TOP BAR ============ -->
+<section class="quiz-topbar">
+  <div class="container">
+    <div class="quiz-topbar-inner">
+      <div class="quiz-subject-info">
+        <span class="qc-badge qc-badge-blue"><i class="bi bi-filetype-py" id="quizSubjectIcon"></i> <span id="quizSubjectText">Loading…</span></span>
+        <span class="quiz-counter">Question <strong id="quizCurrentNum">1</strong> of <strong id="quizTotalNum">10</strong></span>
+      </div>
+
+      <div class="quiz-meta-right">
+        <span class="qc-badge" id="quizDifficultyBadge">Medium</span>
+        <div class="quiz-timer" id="quizTimer">
+          <i class="bi bi-stopwatch"></i>
+          <span id="quizTimerText">15:00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="quiz-progress-track">
+      <div class="quiz-progress-fill" id="quizProgressFill"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUIZ BODY ============ -->
+<section class="qc-section quiz-body-section">
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- Question + options -->
+      <div class="col-lg-8">
+        <div class="qc-glass-card quiz-question-card" id="quizQuestionCard" data-reveal>
+          <p class="quiz-question-text" id="quizQuestionText">Loading question…</p>
+          <div class="quiz-options" id="quizOptionsList"></div>
+        </div>
+
+        <div class="quiz-nav-buttons">
+          <button class="qc-btn qc-btn-outline qc-ripple" id="quizPrevBtn">
+            <i class="bi bi-arrow-left"></i> Previous
+          </button>
+          <div class="quiz-nav-right">
+            <button class="qc-btn qc-btn-outline qc-ripple qc-hide-sm-down" id="quizFlagBtn">
+              <i class="bi bi-flag"></i> Mark for Review
+            </button>
+            <button class="qc-btn qc-btn-primary qc-ripple" id="quizNextBtn">
+              Next <i class="bi bi-arrow-right"></i>
+            </button>
+            <button class="qc-btn qc-btn-primary qc-ripple d-none" id="quizSubmitBtn">
+              Submit Quiz <i class="bi bi-check2-circle"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question palette -->
+      <div class="col-lg-4">
+        <div class="qc-card quiz-palette-card qc-hide-md-down" data-reveal data-reveal-delay="80">
+          <h4>Question Palette</h4>
+          <div class="quiz-palette-grid" id="quizPaletteGrid"></div>
+          <ul class="quiz-palette-legend">
+            <li><span class="dot dot-answered"></span> Answered</li>
+            <li><span class="dot dot-flagged"></span> Flagged</li>
+            <li><span class="dot dot-unanswered"></span> Not answered</li>
+          </ul>
+          <button class="qc-btn qc-btn-primary qc-ripple w-100 mt-3" id="quizPaletteSubmitBtn">
+            Submit Quiz <i class="bi bi-check2-circle"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUBMIT CONFIRM MODAL ============ -->
+<div class="quiz-modal-backdrop d-none" id="quizModalBackdrop">
+  <div class="quiz-modal">
+    <i class="bi bi-question-circle-fill"></i>
+    <h4>Submit this quiz?</h4>
+    <p id="quizModalText">You've answered 6 of 10 questions. Unanswered questions will be marked incorrect.</p>
+    <div class="quiz-modal-actions">
+      <button class="qc-btn qc-btn-outline qc-ripple" id="quizModalCancel">Keep Reviewing</button>
+      <button class="qc-btn qc-btn-primary qc-ripple" id="quizModalConfirm">Submit Now</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="qc-footer quiz-footer">
+  <div class="container">
+    <div class="qc-footer-bottom">
+      <p>© <span id="qcYear"></span> QuizCraft. All rights reserved.</p>
+      <p>Designed for smarter learning.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/quiz.js"></script>
+</body>
+</html>

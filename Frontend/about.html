@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — QuizCraft</title>
+<meta name="description" content="Learn about QuizCraft's mission, vision, technology stack and workflow." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div class="qc-bg-layer">
+  <div class="qc-bg-grid"></div>
+  <div class="qc-blur-circle qc-blur-1"></div>
+  <div class="qc-blur-circle qc-blur-2"></div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="qc-navbar" id="qcNavbar">
+  <div class="container qc-navbar-inner">
+    <a href="index.html" class="qc-logo">
+      <span class="qc-logo-mark">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#aboutLogoGrad)"/>
+          <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+          <defs><linearGradient id="aboutLogoGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+        </svg>
+      </span>
+      <span>Quiz<span class="qc-grad-word">Craft</span></span>
+    </a>
+
+    <button class="qc-burger d-lg-none" id="qcBurger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+
+    <div class="qc-nav-links" id="qcNavLinks">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="subjects.html">Subjects</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="qc-nav-actions">
+      <button class="qc-theme-toggle" id="qcThemeToggle" aria-label="Toggle dark mode"><i class="bi bi-moon-stars-fill"></i></button>
+      <a href="loginpage1.html" class="qc-btn-ghost">Log in</a>
+      <a href="registerpage1.html" class="qc-btn-grad">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ PAGE HEADER ============ -->
+<div class="qc-page-header" data-aos="fade-up">
+  <div class="container">
+    <span class="qc-eyebrow">Our Story</span>
+    <h1>Built to make practice <span class="qc-grad-word">actually work</span></h1>
+    <p>QuizCraft started as an MCA final year project with a simple idea: quizzes should adapt to the learner, not the other way around.</p>
+  </div>
+</div>
+
+<!-- ============ MISSION / VISION / TECH ============ -->
+<section class="qc-section" style="padding-top:20px;">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up">
+        <div class="qc-card qc-info-card">
+          <div class="qc-info-icon" style="background:linear-gradient(135deg,#3B82F6,#2563EB);"><i class="bi bi-bullseye"></i></div>
+          <h4>Our Mission</h4>
+          <p>To make focused, adaptive practice a five-minute daily habit for every student — regardless of their starting level.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+        <div class="qc-card qc-info-card">
+          <div class="qc-info-icon" style="background:linear-gradient(135deg,#A855F7,#7C3AED);"><i class="bi bi-eye"></i></div>
+          <h4>Our Vision</h4>
+          <p>A learning platform where difficulty, pacing and feedback are all personalized in real time, for every subject a student studies.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+        <div class="qc-card qc-info-card">
+          <div class="qc-info-icon" style="background:linear-gradient(135deg,#22D3EE,#06B6D4);"><i class="bi bi-rocket-takeoff"></i></div>
+          <h4>Why Adaptive?</h4>
+          <p>Fixed-difficulty quizzes waste time on questions students have already mastered — or overwhelm them too early. Adaptive practice fixes both.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TECH STACK ============ -->
+<section class="qc-section" style="padding-top:0;">
+  <div class="container">
+    <div class="qc-section-heading" data-aos="fade-up">
+      <span class="qc-eyebrow">Under the Hood</span>
+      <h2>Technology <span class="qc-grad-word">Stack</span></h2>
+      <p>Built with a clean, modern, framework-light stack designed for clarity and easy backend integration.</p>
+    </div>
+
+    <div class="text-center" data-aos="fade-up" data-aos-delay="80">
+      <span class="qc-tech-pill"><i class="bi bi-filetype-html"></i> HTML5</span>
+      <span class="qc-tech-pill"><i class="bi bi-filetype-css"></i> CSS3</span>
+      <span class="qc-tech-pill"><i class="bi bi-bootstrap-fill"></i> Bootstrap 5</span>
+      <span class="qc-tech-pill"><i class="bi bi-filetype-js"></i> Vanilla JavaScript</span>
+      <span class="qc-tech-pill"><i class="bi bi-bar-chart-line-fill"></i> Chart.js</span>
+      <span class="qc-tech-pill"><i class="bi bi-magic"></i> AOS Animations</span>
+      <span class="qc-tech-pill"><i class="bi bi-server"></i> Django (planned)</span>
+      <span class="qc-tech-pill"><i class="bi bi-hdd-network"></i> Django REST Framework (planned)</span>
+      <span class="qc-tech-pill"><i class="bi bi-database"></i> MongoDB (planned)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORKFLOW ============ -->
+<section class="qc-section">
+  <div class="container">
+    <div class="qc-section-heading" data-aos="fade-up">
+      <span class="qc-eyebrow">How It's Built</span>
+      <h2>Development <span class="qc-grad-word">Workflow</span></h2>
+    </div>
+
+    <div class="qc-timeline-v" data-aos="fade-up" data-aos-delay="80">
+      <div class="qc-timeline-v-item">
+        <div class="qc-timeline-v-dot">01</div>
+        <h5>UI/UX Design</h5>
+        <p>Every screen starts as a design-system-first layout — consistent colors, spacing and components across all pages.</p>
+      </div>
+      <div class="qc-timeline-v-item">
+        <div class="qc-timeline-v-dot">02</div>
+        <h5>Frontend Build</h5>
+        <p>HTML5, CSS3, Bootstrap 5 and vanilla JavaScript power every page, with Chart.js for analytics and AOS for scroll animation.</p>
+      </div>
+      <div class="qc-timeline-v-item">
+        <div class="qc-timeline-v-dot">03</div>
+        <h5>API Integration</h5>
+        <p>Django REST Framework will expose endpoints for authentication, questions, quiz attempts and results.</p>
+      </div>
+      <div class="qc-timeline-v-item">
+        <div class="qc-timeline-v-dot">04</div>
+        <h5>Database Layer</h5>
+        <p>MongoDB stores question banks, student profiles and quiz history behind the Django API layer.</p>
+      </div>
+      <div class="qc-timeline-v-item">
+        <div class="qc-timeline-v-dot">05</div>
+        <h5>Adaptive Engine</h5>
+        <p>A difficulty-adjustment algorithm reads each student's running accuracy and reshapes the next question set.</p>
+      </div>
+      <div class="qc-timeline-v-item">
+        <div class="qc-timeline-v-dot">06</div>
+        <h5>Testing &amp; Deployment</h5>
+        <p>End-to-end testing across devices, followed by deployment as a complete MCA final year project submission.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="qc-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <a href="index.html" class="qc-logo qc-footer-logo">
+          <span class="qc-logo-mark">
+            <svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#aboutFootGrad)"/>
+              <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+              <defs><linearGradient id="aboutFootGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+            </svg>
+          </span>
+          <span>Quiz<span class="qc-grad-word">Craft</span></span>
+        </a>
+        <p class="qc-footer-about">Adaptive quizzes that adjust to your level in real time.</p>
+        <div class="qc-footer-socials">
+          <a href="#"><i class="bi bi-twitter-x"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-github"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Quick Links</h6>
+        <ul class="qc-footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="subjects.html">Subjects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Subjects</h6>
+        <ul class="qc-footer-links">
+          <li><a href="subjects.html">Python</a></li>
+          <li><a href="subjects.html">DBMS</a></li>
+          <li><a href="subjects.html">Machine Learning</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Contact</h6>
+        <ul class="qc-footer-links">
+          <li><i class="bi bi-envelope"></i> hello@quizcraft.app</li>
+          <li><i class="bi bi-telephone"></i> +91 98765 43210</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="qc-footer-divider">
+    <div class="qc-footer-bottom">
+      <p>© <span id="qcYear"></span> QuizCraft. All rights reserved.</p>
+      <p>Designed for smarter learning.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+<script src="js/common.js"></script>
+</body>
+</html>

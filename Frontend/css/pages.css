@@ -1,0 +1,317 @@
+/* =========================================================
+   QUIZCRAFT — css/pages.css
+   Shared design system: color tokens, typography, base
+   resets, buttons, cards, badges, section headings, glass
+   surfaces, background layers and scroll-reveal animation.
+   Every new page links this file alongside navbar.css,
+   footer.css and its own page-specific stylesheet.
+   ========================================================= */
+
+:root{
+  --primary:#2563EB;
+  --secondary:#7C3AED;
+  --accent:#06B6D4;
+  --bg:#F8FAFC;
+  --dark:#0F172A;
+
+  --text-heading:#0F172A;
+  --text-body:#475569;
+  --text-muted:#94A3B8;
+
+  --surface:#FFFFFF;
+  --surface-glass: rgba(255,255,255,0.62);
+  --border-soft: rgba(15,23,42,0.08);
+
+  --shadow-sm: 0 2px 8px rgba(15,23,42,0.06);
+  --shadow-md: 0 8px 24px rgba(15,23,42,0.08);
+  --shadow-lg: 0 20px 60px rgba(37,99,235,0.16);
+
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 25px;
+
+  --grad-primary: linear-gradient(135deg, var(--primary), var(--secondary));
+  --grad-accent: linear-gradient(135deg, var(--accent), var(--primary));
+  --grad-text: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent), var(--secondary), var(--primary));
+
+  --font-display: 'Poppins', sans-serif;
+  --nav-h: 84px;
+}
+
+[data-qc-theme="dark"]{
+  --bg:#0B1220;
+  --text-heading:#F1F5F9;
+  --text-body:#B6C2D4;
+  --text-muted:#7C8CA6;
+  --surface:#121A2C;
+  --surface-glass: rgba(18,26,44,0.68);
+  --border-soft: rgba(255,255,255,0.08);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.35);
+  --shadow-lg: 0 20px 60px rgba(37,99,235,0.28);
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+
+body{
+  font-family: var(--font-display);
+  background: var(--bg);
+  color: var(--text-body);
+  margin: 0;
+  overflow-x: hidden;
+  transition: background .4s ease, color .4s ease;
+}
+
+h1,h2,h3,h4,h5,h6{ font-family: var(--font-display); color: var(--text-heading); font-weight: 700; margin: 0; }
+a{ text-decoration: none; color: inherit; }
+ul{ list-style: none; margin: 0; padding: 0; }
+button{ font-family: var(--font-display); }
+
+::selection{ background: var(--primary); color: #fff; }
+:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* ---------- Gradient word / text ---------- */
+.qc-grad-word{
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.qc-gradient-text{
+  background: var(--grad-text);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: qcGradShift 6s linear infinite;
+}
+@keyframes qcGradShift{ 0%{ background-position: 0% 50%; } 100%{ background-position: 300% 50%; } }
+
+/* ---------- Page background layers ---------- */
+.qc-bg-layer{ position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.qc-bg-grid{
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--border-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  opacity: .6;
+}
+.qc-blur-circle{ position: absolute; border-radius: 50%; filter: blur(90px); opacity: .32; animation: qcFloatBlob 18s ease-in-out infinite; }
+.qc-blur-1{ width: 420px; height: 420px; background: var(--primary); top: -100px; left: -120px; }
+.qc-blur-2{ width: 480px; height: 480px; background: var(--secondary); top: 280px; right: -160px; animation-delay: -6s; }
+.qc-blur-3{ width: 360px; height: 360px; background: var(--accent); bottom: -120px; left: 38%; animation-delay: -11s; }
+@keyframes qcFloatBlob{
+  0%,100%{ transform: translate(0,0) scale(1); }
+  33%{ transform: translate(30px,-40px) scale(1.08); }
+  66%{ transform: translate(-25px,30px) scale(0.95); }
+}
+
+/* ---------- Buttons ---------- */
+.qc-btn{
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: .95rem;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.qc-btn-primary{
+  color: #fff;
+  background: var(--grad-primary);
+  box-shadow: 0 10px 28px rgba(37,99,235,.35);
+}
+.qc-btn-primary:hover{ transform: translateY(-3px); box-shadow: 0 16px 36px rgba(37,99,235,.45); color:#fff; }
+.qc-btn-primary:disabled{ opacity: .5; cursor: not-allowed; box-shadow: none; transform: none; }
+
+.qc-btn-outline{
+  color: var(--text-heading);
+  background: var(--surface-glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-soft);
+}
+.qc-btn-outline:hover{ transform: translateY(-3px); box-shadow: var(--shadow-md); color: var(--text-heading); }
+
+.qc-btn-danger-outline{
+  color: #EF4444;
+  background: rgba(239,68,68,.06);
+  border: 1px solid rgba(239,68,68,.3);
+}
+.qc-btn-danger-outline:hover{ background: rgba(239,68,68,.12); transform: translateY(-2px); }
+
+.qc-ripple-effect{
+  position: absolute; border-radius: 50%;
+  background: rgba(255,255,255,.55);
+  transform: scale(0);
+  animation: qcRipple .6s ease-out;
+  pointer-events: none;
+}
+@keyframes qcRipple{ to{ transform: scale(3); opacity: 0; } }
+
+/* ---------- Cards ---------- */
+.qc-card{
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.qc-card:hover{ transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+
+.qc-glass-card{
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ---------- Badges / pills ---------- */
+.qc-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .8rem;
+  font-weight: 600;
+  padding: 7px 15px;
+  border-radius: 100px;
+}
+.qc-badge-blue{ color: var(--primary); background: rgba(37,99,235,.1); }
+.qc-badge-purple{ color: var(--secondary); background: rgba(124,58,237,.1); }
+.qc-badge-cyan{ color: #0891B2; background: rgba(6,182,212,.12); }
+.qc-badge-green{ color: #0F9D6A; background: rgba(16,185,129,.1); }
+.qc-badge-orange{ color: #B45309; background: rgba(245,158,11,.12); }
+.qc-badge-red{ color: #B91C1C; background: rgba(239,68,68,.1); }
+
+/* ---------- Section heading ---------- */
+.qc-section-heading{ max-width: 640px; margin: 0 auto 50px; text-align: center; }
+.qc-eyebrow{ display: inline-block; font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--secondary); margin-bottom: 12px; }
+.qc-section-heading h2{ font-size: clamp(1.6rem, 3vw, 2.3rem); margin-bottom: 14px; }
+.qc-section-heading p{ color: var(--text-body); font-size: 1rem; }
+
+/* ---------- Progress / meters ---------- */
+.qc-progress-track{ width: 100%; height: 8px; background: rgba(15,23,42,.08); border-radius: 100px; overflow: hidden; }
+.qc-progress-fill{ height: 100%; background: var(--grad-accent); border-radius: 100px; transition: width .4s ease; }
+
+/* ---------- Scroll reveal ---------- */
+[data-reveal]{ opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+[data-reveal].revealed{ opacity: 1; transform: translateY(0); }
+
+/* ---------- Empty state ---------- */
+.qc-empty-state{ text-align: center; padding: 60px 20px; color: var(--text-muted); }
+.qc-empty-state i{ font-size: 2.6rem; margin-bottom: 16px; display: block; color: var(--text-muted); }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}
+
+/* =========================================================
+   MILESTONE 3 ADDITIONS — shared components reused across
+   Features / Subjects / About / Contact / 404 so those pages
+   don't need their own dedicated stylesheets.
+   ========================================================= */
+
+/* ---------- Simple page header (marketing / info pages) ---------- */
+.qc-page-header{ padding: 140px 0 60px; text-align: center; }
+.qc-page-header .qc-eyebrow{ margin-bottom: 14px; }
+.qc-page-header h1{ font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 16px; }
+.qc-page-header p{ max-width: 620px; margin: 0 auto; color: var(--text-body); font-size: 1.02rem; }
+
+/* ---------- Vertical timeline (About → Workflow) ---------- */
+.qc-timeline-v{ position: relative; max-width: 720px; margin: 0 auto; padding-left: 46px; }
+.qc-timeline-v::before{
+  content: '';
+  position: absolute; left: 18px; top: 6px; bottom: 6px;
+  width: 2px;
+  background: linear-gradient(var(--primary), var(--secondary), var(--accent));
+  opacity: .35;
+}
+.qc-timeline-v-item{ position: relative; padding-bottom: 40px; }
+.qc-timeline-v-item:last-child{ padding-bottom: 0; }
+.qc-timeline-v-dot{
+  position: absolute; left: -46px; top: 0;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--border-soft);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: .85rem; color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+.qc-timeline-v-item h5{ font-size: 1.05rem; margin-bottom: 8px; }
+.qc-timeline-v-item p{ font-size: .9rem; color: var(--text-body); line-height: 1.7; margin: 0; }
+
+/* ---------- Mission / Vision / Tech stack cards ---------- */
+.qc-info-card{ height: 100%; padding: 34px 28px; }
+.qc-info-card .qc-info-icon{
+  width: 56px; height: 56px; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; color: #fff; margin-bottom: 22px;
+}
+.qc-info-card h4{ font-size: 1.15rem; margin-bottom: 10px; }
+.qc-info-card p{ font-size: .92rem; line-height: 1.7; color: var(--text-body); margin: 0; }
+
+.qc-tech-pill{
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .85rem; font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 100px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  color: var(--text-heading);
+  margin: 6px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.qc-tech-pill:hover{ transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.qc-tech-pill i{ color: var(--primary); }
+
+/* ---------- Contact page ---------- */
+.qc-contact-card{ padding: 30px; height: 100%; text-align: center; }
+.qc-contact-card .qc-info-icon{ margin: 0 auto 18px; }
+.qc-contact-card h5{ font-size: 1rem; margin-bottom: 8px; }
+.qc-contact-card p{ font-size: .88rem; color: var(--text-body); margin: 0; }
+
+.qc-map-placeholder{
+  height: 280px;
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(rgba(37,99,235,.06), rgba(124,58,237,.06)),
+    repeating-linear-gradient(45deg, rgba(15,23,42,.03) 0 10px, transparent 10px 20px);
+  border: 1px dashed var(--border-soft);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: var(--text-muted);
+  gap: 10px;
+}
+.qc-map-placeholder i{ font-size: 2.2rem; color: var(--primary); }
+
+/* ---------- 404 page ---------- */
+.qc-404-section{ min-height: calc(100vh - var(--nav-h, 84px) - 260px); display: flex; align-items: center; padding: 80px 0; }
+.qc-404-illustration{ width: 100%; max-width: 380px; margin: 0 auto 36px; }
+.qc-404-number{
+  font-size: clamp(4rem, 12vw, 7rem);
+  font-weight: 800;
+  line-height: 1;
+  background: var(--grad-text);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: qcGradShift 6s linear infinite;
+  text-align: center;
+}
+.qc-404-float{ animation: qc404Float 4s ease-in-out infinite; }
+@keyframes qc404Float{ 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-14px); } }
+
+@media (max-width: 767.98px){
+  .qc-timeline-v{ padding-left: 38px; }
+  .qc-timeline-v-dot{ left: -38px; width: 32px; height: 32px; font-size: .76rem; }
+}

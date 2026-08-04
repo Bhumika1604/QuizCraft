@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Subjects — QuizCraft</title>
+<meta name="description" content="Browse all subjects available for adaptive quiz practice on QuizCraft." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/faculty.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div class="qc-bg-layer">
+  <div class="qc-bg-grid"></div>
+  <div class="qc-blur-circle qc-blur-1"></div>
+  <div class="qc-blur-circle qc-blur-2"></div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="qc-navbar" id="qcNavbar">
+  <div class="container qc-navbar-inner">
+    <a href="index.html" class="qc-logo">
+      <span class="qc-logo-mark">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#subjLogoGrad)"/>
+          <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+          <defs><linearGradient id="subjLogoGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+        </svg>
+      </span>
+      <span>Quiz<span class="qc-grad-word">Craft</span></span>
+    </a>
+
+    <button class="qc-burger d-lg-none" id="qcBurger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+
+    <div class="qc-nav-links" id="qcNavLinks">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="subjects.html" class="active">Subjects</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="qc-nav-actions">
+      <button class="qc-theme-toggle" id="qcThemeToggle" aria-label="Toggle dark mode"><i class="bi bi-moon-stars-fill"></i></button>
+      <a href="loginpage1.html" class="qc-btn-ghost">Log in</a>
+      <a href="registerpage1.html" class="qc-btn-grad">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ PAGE HEADER ============ -->
+<div class="qc-page-header" data-aos="fade-up">
+  <div class="container">
+    <span class="qc-eyebrow">Question Bank</span>
+    <h1>Practice across <span class="qc-grad-word">11 subjects</span></h1>
+    <p>From core programming languages to computer science fundamentals — pick a subject and the adaptive engine takes care of the rest.</p>
+  </div>
+</div>
+
+<!-- ============ SUBJECT GRID ============ -->
+<section class="qc-section" style="padding-top:20px;">
+  <div class="container">
+    <div class="row g-4">
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up">
+        <a href="registerpage1.html" class="fac-category-card" data-subject="Python">
+          <i class="bi bi-filetype-py"></i>
+          <h6>Python</h6>
+          <span class="fac-category-count">132 Questions</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="60">
+        <a href="registerpage1.html" class="fac-category-card" data-subject="Java">
+          <i class="bi bi-cup-hot-fill"></i>
+          <h6>Java</h6>
+          <span class="fac-category-count">98 Questions</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="120">
+        <a href="registerpage1.html" class="fac-category-card" data-subject="C">
+          <i class="bi bi-braces"></i>
+          <h6>C</h6>
+          <span class="fac-category-count">70 Questions</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="180">
+        <a href="registerpage1.html" class="fac-category-card" data-subject="C++">
+          <i class="bi bi-braces-asterisk"></i>
+          <h6>C++</h6>
+          <span class="fac-category-count">76 Questions</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up">
+        <a href="registerpage1.html" class="fac-category-card" data-subject="DBMS">
+          <i class="bi bi-database-fill"></i>
+          <h6>DBMS</h6>
+          <span class="fac-category-count">62 Questions</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="60">
+        <a href="registerpage1.html" class="fac-category-card" data-subject="Operating System">
+          <i class="bi bi-hdd-stack-fill"></i>
+          <h6>Operating System</h6>
+          <span class="fac-category-count">58 Questions</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="120">
+        <a href="registerpage1.html" class="fac-category-card" data-subject="Computer Networks">
+          <i class="bi bi-diagram-2-fill"></i>
+          <h6>Computer Networks</h6>
+          <span class="fac-category-count">54 Questions</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="180">
+        <a href="registerpage1.html" class="fac-category-card" data-subject="Software Engineering">
+          <i class="bi bi-diagram-3-fill"></i>
+          <h6>Software Engineering</h6>
+          <span class="fac-category-count">46 Questions</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up">
+        <a href="registerpage1.html" class="fac-category-card" data-subject="Machine Learning">
+          <i class="bi bi-cpu-fill"></i>
+          <h6>Machine Learning</h6>
+          <span class="fac-category-count">34 Questions</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="60">
+        <a href="registerpage1.html" class="fac-category-card" data-subject="Web Development">
+          <i class="bi bi-globe2"></i>
+          <h6>Web Development</h6>
+          <span class="fac-category-count">84 Questions</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="120">
+        <a href="registerpage1.html" class="fac-category-card" data-subject="Aptitude">
+          <i class="bi bi-calculator-fill"></i>
+          <h6>Aptitude</h6>
+          <span class="fac-category-count">110 Questions</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="qc-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <a href="index.html" class="qc-logo qc-footer-logo">
+          <span class="qc-logo-mark">
+            <svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#subjFootGrad)"/>
+              <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+              <defs><linearGradient id="subjFootGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+            </svg>
+          </span>
+          <span>Quiz<span class="qc-grad-word">Craft</span></span>
+        </a>
+        <p class="qc-footer-about">Adaptive quizzes that adjust to your level in real time.</p>
+        <div class="qc-footer-socials">
+          <a href="#"><i class="bi bi-twitter-x"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-github"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Quick Links</h6>
+        <ul class="qc-footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Subjects</h6>
+        <ul class="qc-footer-links">
+          <li><a href="subjects.html">Python</a></li>
+          <li><a href="subjects.html">DBMS</a></li>
+          <li><a href="subjects.html">Machine Learning</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Contact</h6>
+        <ul class="qc-footer-links">
+          <li><i class="bi bi-envelope"></i> hello@quizcraft.app</li>
+          <li><i class="bi bi-telephone"></i> +91 98765 43210</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="qc-footer-divider">
+    <div class="qc-footer-bottom">
+      <p>© <span id="qcYear"></span> QuizCraft. All rights reserved.</p>
+      <p>Designed for smarter learning.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+<script src="js/common.js"></script>
+</body>
+</html>

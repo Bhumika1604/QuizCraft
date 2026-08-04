@@ -1,0 +1,281 @@
+/* =========================================================
+   QUIZCRAFT — css/question.css
+   Shared styles for Manage Questions, Add/Edit Question,
+   and View Results — data tables, filter bars, forms,
+   pagination and the delete-confirmation modal.
+   ========================================================= */
+
+.qp-page-header{ padding: 56px 0 8px; }
+.qp-page-header-inner{
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap;
+}
+.qp-page-header h1{ font-size: clamp(1.5rem, 2.6vw, 2rem); margin-bottom: 8px; }
+.qp-page-header p{ margin: 0; color: var(--text-body); font-size: .95rem; }
+.qp-page-actions{ display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ---------- Filter / toolbar ---------- */
+.qp-toolbar{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+}
+.qp-search-box{ position: relative; flex: 1 1 260px; min-width: 220px; }
+.qp-search-box i{ position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+.qp-search-box input{
+  width: 100%;
+  padding: 12px 16px 12px 44px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border-soft);
+  background: var(--surface);
+  color: var(--text-heading);
+  font-family: var(--font-display);
+  font-size: .9rem;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.qp-search-box input:focus{ outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(37,99,235,.12); }
+
+.qp-filter-select{
+  padding: 12px 36px 12px 16px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border-soft);
+  background: var(--surface);
+  color: var(--text-heading);
+  font-family: var(--font-display);
+  font-size: .88rem;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M0 0l5 6 5-6z' fill='%2394A3B8'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  transition: border-color .2s ease;
+}
+.qp-filter-select:focus{ outline: none; border-color: var(--primary); }
+
+/* ---------- Data table ---------- */
+.qp-table-card{ padding: 0; overflow: hidden; }
+.qp-table-wrap{ overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.qp-table{ width: 100%; border-collapse: collapse; min-width: 720px; }
+.qp-table thead th{
+  text-align: left;
+  font-size: .76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--text-muted);
+  background: rgba(15,23,42,.02);
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-soft);
+  white-space: nowrap;
+}
+.qp-table tbody td{
+  padding: 16px 20px;
+  font-size: .87rem;
+  color: var(--text-body);
+  border-bottom: 1px solid var(--border-soft);
+  vertical-align: middle;
+}
+.qp-table tbody tr{ transition: background .2s ease; }
+.qp-table tbody tr:hover{ background: rgba(37,99,235,.03); }
+.qp-table tbody tr:last-child td{ border-bottom: none; }
+
+.qp-question-cell{ max-width: 340px; }
+.qp-question-cell p{ margin: 0; font-weight: 600; color: var(--text-heading); font-size: .87rem; line-height: 1.5; }
+.qp-question-cell span{ font-size: .76rem; color: var(--text-muted); }
+
+.qp-diff-badge.easy{ color: #0F9D6A; background: rgba(16,185,129,.12); }
+.qp-diff-badge.medium{ color: #B45309; background: rgba(245,158,11,.14); }
+.qp-diff-badge.hard{ color: #B91C1C; background: rgba(239,68,68,.12); }
+
+.qp-row-actions{ display: flex; align-items: center; gap: 8px; }
+.qp-icon-btn{
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  border: 1px solid var(--border-soft);
+  background: var(--surface);
+  color: var(--text-body);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+  font-size: .9rem;
+}
+.qp-icon-btn:hover{ transform: translateY(-2px); }
+.qp-icon-btn.view:hover{ color: var(--primary); border-color: rgba(37,99,235,.3); background: rgba(37,99,235,.06); }
+.qp-icon-btn.edit:hover{ color: #B45309; border-color: rgba(245,158,11,.35); background: rgba(245,158,11,.1); }
+.qp-icon-btn.delete:hover{ color: #EF4444; border-color: rgba(239,68,68,.35); background: rgba(239,68,68,.08); }
+
+.qp-empty-row td{ text-align: center; padding: 60px 20px; color: var(--text-muted); }
+
+/* ---------- Pagination ---------- */
+.qp-pagination{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 18px 22px;
+  border-top: 1px solid var(--border-soft);
+}
+.qp-pagination-info{ font-size: .82rem; color: var(--text-muted); }
+.qp-pagination-buttons{ display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.qp-page-btn{
+  min-width: 34px; height: 34px;
+  padding: 0 8px;
+  border-radius: 9px;
+  border: 1px solid var(--border-soft);
+  background: var(--surface);
+  color: var(--text-body);
+  font-size: .82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.qp-page-btn:hover:not(:disabled){ border-color: rgba(37,99,235,.35); color: var(--primary); }
+.qp-page-btn.active{ background: var(--grad-primary); color: #fff; border-color: transparent; }
+.qp-page-btn:disabled{ opacity: .4; cursor: not-allowed; }
+
+/* ---------- Forms (Add / Edit Question) ---------- */
+.qp-form-card{ padding: 40px; }
+.qp-form-section-title{
+  font-size: .95rem; font-weight: 700; color: var(--text-heading);
+  margin: 30px 0 18px; display: flex; align-items: center; gap: 8px;
+}
+.qp-form-section-title:first-child{ margin-top: 0; }
+.qp-form-section-title i{ color: var(--primary); }
+
+.qp-field{ margin-bottom: 20px; }
+.qp-label{ display: block; font-size: .85rem; font-weight: 600; color: var(--text-heading); margin-bottom: 8px; }
+.qp-label .required{ color: #EF4444; }
+
+.qp-input, .qp-textarea, .qp-select{
+  width: 100%;
+  padding: 13px 16px;
+  font-size: .9rem;
+  font-family: var(--font-display);
+  border-radius: 14px;
+  border: 1.5px solid var(--border-soft);
+  background: var(--surface);
+  color: var(--text-heading);
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+.qp-textarea{ resize: vertical; min-height: 100px; line-height: 1.6; }
+.qp-input:focus, .qp-textarea:focus, .qp-select:focus{
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(37,99,235,.14);
+}
+.qp-select{
+  appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M0 0l5 6 5-6z' fill='%2394A3B8'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.qp-options-grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.qp-option-field{ position: relative; }
+.qp-option-field .qp-option-letter{
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  width: 22px; height: 22px; border-radius: 6px;
+  background: rgba(15,23,42,.06);
+  color: var(--text-body);
+  font-size: .72rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+}
+.qp-option-field input{ padding-left: 46px; }
+
+.qp-correct-answer-group{ display: flex; gap: 12px; flex-wrap: wrap; }
+.qp-correct-radio{
+  flex: 1 1 100px;
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border-soft);
+  cursor: pointer;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--text-body);
+  transition: border-color .2s ease, background .2s ease, color .2s ease;
+}
+.qp-correct-radio input{ accent-color: var(--primary); cursor: pointer; }
+.qp-correct-radio.checked{ border-color: #10B981; background: rgba(16,185,129,.08); color: #0F9D6A; }
+
+.qp-upload-box{
+  border: 1.5px dashed var(--border-soft);
+  border-radius: 14px;
+  padding: 28px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .2s ease, background .2s ease;
+  position: relative;
+}
+.qp-upload-box:hover{ border-color: rgba(37,99,235,.4); background: rgba(37,99,235,.03); }
+.qp-upload-box i{ font-size: 1.8rem; color: var(--primary); margin-bottom: 10px; display: block; }
+.qp-upload-box p{ margin: 0; font-size: .85rem; color: var(--text-body); }
+.qp-upload-box span{ font-size: .76rem; color: var(--text-muted); }
+.qp-upload-box input[type="file"]{ position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.qp-upload-preview{
+  margin-top: 16px;
+  display: none;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(37,99,235,.06);
+}
+.qp-upload-preview.active{ display: flex; }
+.qp-upload-preview img{ width: 56px; height: 56px; border-radius: 10px; object-fit: cover; }
+.qp-upload-preview .name{ font-size: .84rem; font-weight: 600; color: var(--text-heading); }
+.qp-upload-preview .remove-btn{
+  margin-left: auto; border: none; background: transparent; color: #EF4444;
+  cursor: pointer; font-size: 1rem;
+}
+
+.qp-error{ font-size: .78rem; color: #EF4444; margin-top: 6px; min-height: 1em; }
+.qp-input.is-invalid, .qp-textarea.is-invalid, .qp-select.is-invalid{
+  border-color: #EF4444;
+  box-shadow: 0 0 0 4px rgba(239,68,68,.1);
+}
+
+.qp-form-actions{ display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap; }
+
+/* ---------- View Results extras ---------- */
+.qp-export-btn{ display: inline-flex; align-items: center; gap: 8px; }
+.qp-score-cell{ font-weight: 700; color: var(--text-heading); }
+.qp-percentage-bar{ display: flex; align-items: center; gap: 10px; min-width: 140px; }
+.qp-percentage-bar .qc-progress-track{ flex: 1; }
+.qp-percentage-bar span{ font-size: .8rem; font-weight: 700; color: var(--text-heading); white-space: nowrap; }
+
+/* ---------- Delete confirmation modal (reuses quiz-modal pattern) ---------- */
+.qp-modal-backdrop{
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(15,23,42,.55);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.qp-modal{
+  width: 100%; max-width: 400px;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 38px 34px;
+  text-align: center;
+}
+.qp-modal i{ font-size: 2.4rem; color: #EF4444; margin-bottom: 16px; }
+.qp-modal h4{ font-size: 1.15rem; margin-bottom: 10px; }
+.qp-modal p{ font-size: .89rem; color: var(--text-body); margin-bottom: 26px; }
+.qp-modal-actions{ display: flex; gap: 12px; }
+.qp-modal-actions .qc-btn{ flex: 1; }
+
+@media (max-width: 767.98px){
+  .qp-form-card{ padding: 28px 22px; }
+  .qp-options-grid{ grid-template-columns: 1fr; }
+  .qp-toolbar{ padding: 16px; }
+}

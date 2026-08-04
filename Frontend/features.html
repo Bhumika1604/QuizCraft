@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Features — QuizCraft</title>
+<meta name="description" content="Explore QuizCraft's adaptive quiz engine, analytics, leaderboard and more." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div class="qc-bg-layer">
+  <div class="qc-bg-grid"></div>
+  <div class="qc-blur-circle qc-blur-1"></div>
+  <div class="qc-blur-circle qc-blur-2"></div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="qc-navbar" id="qcNavbar">
+  <div class="container qc-navbar-inner">
+    <a href="index.html" class="qc-logo">
+      <span class="qc-logo-mark">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#featLogoGrad)"/>
+          <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+          <defs><linearGradient id="featLogoGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+        </svg>
+      </span>
+      <span>Quiz<span class="qc-grad-word">Craft</span></span>
+    </a>
+
+    <button class="qc-burger d-lg-none" id="qcBurger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+
+    <div class="qc-nav-links" id="qcNavLinks">
+      <a href="index.html">Home</a>
+      <a href="features.html" class="active">Features</a>
+      <a href="subjects.html">Subjects</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="qc-nav-actions">
+      <button class="qc-theme-toggle" id="qcThemeToggle" aria-label="Toggle dark mode"><i class="bi bi-moon-stars-fill"></i></button>
+      <a href="loginpage1.html" class="qc-btn-ghost">Log in</a>
+      <a href="registerpage1.html" class="qc-btn-grad">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ PAGE HEADER ============ -->
+<div class="qc-page-header" data-aos="fade-up">
+  <div class="container">
+    <span class="qc-eyebrow">Capabilities</span>
+    <h1>Everything you need to <span class="qc-grad-word">learn adaptively</span></h1>
+    <p>QuizCraft combines an adaptive difficulty engine with real-time analytics, so every quiz meets you exactly where you are.</p>
+  </div>
+</div>
+
+<!-- ============ FEATURE GRID ============ -->
+<section class="qc-section" style="padding-top:20px;">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up">
+        <div class="qc-card qc-info-card">
+          <div class="qc-info-icon" style="background:linear-gradient(135deg,#3B82F6,#2563EB);"><i class="bi bi-cpu"></i></div>
+          <h4>Adaptive Quiz Engine</h4>
+          <p>Every answer feeds a running skill estimate. The next question steps up or down in difficulty automatically, keeping you in your optimal challenge zone.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+        <div class="qc-card qc-info-card">
+          <div class="qc-info-icon" style="background:linear-gradient(135deg,#A855F7,#7C3AED);"><i class="bi bi-bar-chart-steps"></i></div>
+          <h4>Difficulty-Based Scoring</h4>
+          <p>Harder questions earn more points, so your score reflects genuine mastery rather than just the number of correct guesses.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+        <div class="qc-card qc-info-card">
+          <div class="qc-info-icon" style="background:linear-gradient(135deg,#22D3EE,#06B6D4);"><i class="bi bi-stopwatch"></i></div>
+          <h4>Live Timer</h4>
+          <p>A gentle countdown on every question keeps recall sharp and simulates real exam pressure without a harsh cutoff.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up">
+        <div class="qc-card qc-info-card">
+          <div class="qc-info-icon" style="background:linear-gradient(135deg,#3B82F6,#2563EB);"><i class="bi bi-graph-up"></i></div>
+          <h4>Performance Analytics</h4>
+          <p>Topic-wise heatmaps and trend lines show exactly where you're improving and where to focus next, updated after every attempt.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+        <div class="qc-card qc-info-card">
+          <div class="qc-info-icon" style="background:linear-gradient(135deg,#FBBF24,#F59E0B);"><i class="bi bi-trophy"></i></div>
+          <h4>Leaderboard</h4>
+          <p>See how you stack up against classmates by subject or overall, with weekly resets to keep the competition fresh.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+        <div class="qc-card qc-info-card">
+          <div class="qc-info-icon" style="background:linear-gradient(135deg,#22D3EE,#06B6D4);"><i class="bi bi-lightning-charge"></i></div>
+          <h4>Instant Results</h4>
+          <p>See your score, accuracy and a full answer breakdown the second you submit — no waiting, no guessing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="qc-section" style="padding-top:0;">
+  <div class="container">
+    <div class="qc-glass-card" style="padding:56px 48px; text-align:center;" data-aos="fade-up">
+      <h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem); margin-bottom:14px;">Ready to try adaptive practice?</h2>
+      <p style="color:var(--text-body); margin-bottom:26px;">Create a free account and take your first adaptive quiz in under a minute.</p>
+      <a href="registerpage1.html" class="qc-btn qc-btn-primary qc-ripple"><i class="bi bi-arrow-right-circle"></i> Get Started Free</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="qc-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <a href="index.html" class="qc-logo qc-footer-logo">
+          <span class="qc-logo-mark">
+            <svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#featFootGrad)"/>
+              <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+              <defs><linearGradient id="featFootGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+            </svg>
+          </span>
+          <span>Quiz<span class="qc-grad-word">Craft</span></span>
+        </a>
+        <p class="qc-footer-about">Adaptive quizzes that adjust to your level in real time — built to make focused practice a daily habit.</p>
+        <div class="qc-footer-socials">
+          <a href="#"><i class="bi bi-twitter-x"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-github"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Quick Links</h6>
+        <ul class="qc-footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="subjects.html">Subjects</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Subjects</h6>
+        <ul class="qc-footer-links">
+          <li><a href="subjects.html">Python</a></li>
+          <li><a href="subjects.html">Java</a></li>
+          <li><a href="subjects.html">Web Development</a></li>
+          <li><a href="subjects.html">DBMS</a></li>
+          <li><a href="subjects.html">Machine Learning</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Contact</h6>
+        <ul class="qc-footer-links">
+          <li><i class="bi bi-envelope"></i> hello@quizcraft.app</li>
+          <li><i class="bi bi-telephone"></i> +91 98765 43210</li>
+          <li><i class="bi bi-geo-alt"></i> Mumbai, Maharashtra, India</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="qc-footer-divider">
+    <div class="qc-footer-bottom">
+      <p>© <span id="qcYear"></span> QuizCraft. All rights reserved.</p>
+      <p>Designed for smarter learning.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+<script src="js/common.js"></script>
+</body>
+</html>

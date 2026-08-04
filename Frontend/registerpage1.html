@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Create Account — QuizCraft</title>
+<meta name="description" content="Create your QuizCraft account and start adaptive quiz practice today." />
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
+<!-- Fully self-contained: registerpage1.css only -->
+<link rel="stylesheet" href="css/registerpage1.css">
+</head>
+<body>
+
+<!-- ============ NAVBAR (same visual design as Homepage / Login) ============ -->
+<nav class="rp1-navbar" id="rp1Navbar">
+  <div class="container rp1-navbar-inner">
+    <a href="index.html" class="rp1-logo">
+      <span class="rp1-logo-mark">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#rp1LogoGrad)"/>
+          <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+          <defs>
+            <linearGradient id="rp1LogoGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#2563EB"/>
+              <stop offset="1" stop-color="#7C3AED"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      <span class="rp1-logo-text">Quiz<span class="rp1-grad-word">Craft</span></span>
+    </a>
+
+    <button class="rp1-burger d-lg-none" id="rp1Burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="rp1-nav-links" id="rp1NavLinks">
+      <a href="index.html">Home</a>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#subjects">Subjects</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+
+    <div class="rp1-nav-actions">
+      <button class="rp1-theme-toggle" id="rp1ThemeToggle" aria-label="Toggle dark mode">
+        <i class="bi bi-moon-stars-fill"></i>
+      </button>
+      <a href="loginpage1.html" class="rp1-btn-login">Log In</a>
+      <a href="index.html" class="rp1-btn-register"><i class="bi bi-arrow-left"></i> Back to Home</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ REGISTER SECTION (Bootstrap grid, normal document flow) ============ -->
+<section class="register-section">
+  <div class="rp1-bg-blur blur-a"></div>
+  <div class="rp1-bg-blur blur-b"></div>
+  <div class="rp1-bg-grid"></div>
+
+  <div class="container">
+    <div class="row align-items-center gy-5">
+
+      <!-- LEFT COLUMN: illustration -->
+      <div class="col-lg-6">
+        <div class="illustration-copy" data-reveal>
+          <div class="rp1-badge">
+            <span class="rp1-badge-dot"></span>
+            Join QuizCraft
+          </div>
+          <h1>Start your <span class="rp1-gradient-text">adaptive learning</span> journey</h1>
+          <p>Create a free account to unlock adaptive quizzes, real-time analytics and a dashboard that adjusts to exactly how you learn.</p>
+
+          <div class="illustration-stats">
+            <div class="stat-box">
+              <h3>5000+</h3>
+              <p>Students</p>
+            </div>
+            <div class="stat-box">
+              <h3>1000+</h3>
+              <p>Questions</p>
+            </div>
+            <div class="stat-box">
+              <h3>100%</h3>
+              <p>Free to Join</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard mockup: pure HTML/CSS, no images -->
+        <div class="dash-stage" data-reveal data-reveal-delay="120">
+
+          <!-- 1. Question Card (main) -->
+          <div class="dash-card main-card float-slow">
+            <div class="dash-head">
+              <div class="dash-avatar"><i class="bi bi-mortarboard-fill"></i></div>
+              <div>
+                <p class="dash-title">Python · Loops &amp; Iteration</p>
+                <p class="dash-sub">Question 4 of 10</p>
+              </div>
+              <span class="dash-pill">Medium</span>
+            </div>
+
+            <div class="dash-question">What does <code>range(2, 10, 2)</code> generate?</div>
+
+            <div class="dash-option correct">
+              <span>A</span> 2, 4, 6, 8
+              <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <div class="dash-option">
+              <span>B</span> 2, 3, 4, 5, 6, 7, 8, 9
+            </div>
+          </div>
+
+          <!-- 2. Quiz Progress -->
+          <div class="dash-card float-chip progress-chip float-med">
+            <p class="chip-label">Quiz Progress</p>
+            <div class="chip-track"><div class="chip-fill"></div></div>
+            <p class="chip-value">32% complete</p>
+          </div>
+
+          <!-- 3. Performance Analytics -->
+          <div class="dash-card float-chip analytics-chip float-fast">
+            <p class="chip-label">Performance Analytics</p>
+            <div class="pie-wrap">
+              <svg viewBox="0 0 36 36" class="pie-svg">
+                <path class="pie-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                <path class="pie-fg" stroke-dasharray="64, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+              </svg>
+              <span class="pie-value">64%</span>
+            </div>
+          </div>
+
+          <!-- 4. AI Adaptive Learning -->
+          <div class="dash-card float-chip ai-chip float-med">
+            <i class="bi bi-cpu-fill"></i>
+            <div>
+              <p class="chip-label m-0">AI Adaptive</p>
+              <p class="chip-value m-0">Learning Engine</p>
+            </div>
+          </div>
+
+          <!-- 5. Live Timer -->
+          <div class="dash-card float-chip timer-chip float-fast">
+            <div class="timer-ring">
+              <svg viewBox="0 0 40 40">
+                <circle cx="20" cy="20" r="16" class="ring-bg"/>
+                <circle cx="20" cy="20" r="16" class="ring-fg"/>
+              </svg>
+              <span>12s</span>
+            </div>
+            <div>
+              <p class="chip-label m-0">Live Timer</p>
+              <p class="chip-value m-0">Question ticking</p>
+            </div>
+          </div>
+
+          <!-- 6. Score Card -->
+          <div class="dash-card float-chip score-card-chip float-med">
+            <i class="bi bi-star-fill"></i>
+            <div>
+              <p class="chip-label m-0">Score Card</p>
+              <p class="chip-value m-0">860 points</p>
+            </div>
+          </div>
+
+          <!-- 7. Achievement Badge -->
+          <div class="dash-card float-chip badge-chip float-slow">
+            <i class="bi bi-patch-check-fill"></i>
+            <div>
+              <p class="chip-label m-0">Achievement Badge</p>
+              <p class="chip-value m-0">First Quiz Complete</p>
+            </div>
+          </div>
+
+          <!-- 8. Trophy -->
+          <div class="dash-card float-chip trophy-chip float-fast">
+            <i class="bi bi-trophy-fill"></i>
+            <div>
+              <p class="chip-label m-0">Trophy</p>
+              <p class="chip-value m-0">Top 5% This Week</p>
+            </div>
+          </div>
+
+          <div class="dash-glow"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: centered glass register card -->
+      <div class="col-lg-6">
+        <div class="register-card-wrap">
+          <div class="register-card" data-reveal data-reveal-delay="60">
+
+            <div class="register-card-head">
+              <span class="rp1-logo-mark register-mark">
+                <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#rp1LogoGrad2)"/>
+                  <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+                  <defs>
+                    <linearGradient id="rp1LogoGrad2" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#2563EB"/>
+                      <stop offset="1" stop-color="#7C3AED"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+              <h2>Create your account</h2>
+              <p>Join for free and start your adaptive quiz journey.</p>
+            </div>
+
+            <!--
+              DJANGO INTEGRATION NOTES:
+              1. Set form action="{% url 'register' %}" method="post"
+              2. Add {% csrf_token %} as the first element inside <form>,
+                 replacing the hidden csrfmiddlewaretoken input below.
+              3. Server-side field errors can render into the matching
+                 #rp1...Error elements below.
+              4. Framework messages (django.contrib.messages) can populate #rp1Alert.
+            -->
+            <div class="rp1-alert d-none" id="rp1Alert" role="alert"></div>
+
+            <form id="rp1RegisterForm" name="registerForm" action="#" method="POST" novalidate>
+              <input type="hidden" name="csrfmiddlewaretoken" id="csrfmiddlewaretoken" value="">
+
+              <div class="rp1-field">
+                <label for="rp1FullName" class="rp1-label">Full Name</label>
+                <div class="rp1-input-icon">
+                  <i class="bi bi-person"></i>
+                  <input type="text" class="rp1-input" id="rp1FullName" name="full_name" placeholder="Enter your full name" autocomplete="name" required>
+                </div>
+                <div class="rp1-error" id="rp1FullNameError"></div>
+              </div>
+
+              <div class="rp1-field">
+                <label for="rp1Email" class="rp1-label">Email Address</label>
+                <div class="rp1-input-icon">
+                  <i class="bi bi-envelope"></i>
+                  <input type="email" class="rp1-input" id="rp1Email" name="email" placeholder="you@example.com" autocomplete="email" required>
+                </div>
+                <div class="rp1-error" id="rp1EmailError"></div>
+              </div>
+
+              <div class="rp1-field">
+                <label for="rp1Phone" class="rp1-label">Phone Number</label>
+                <div class="rp1-input-icon">
+                  <i class="bi bi-telephone"></i>
+                  <input type="tel" class="rp1-input" id="rp1Phone" name="phone" placeholder="98765 43210" autocomplete="tel" maxlength="10" inputmode="numeric" required>
+                </div>
+                <div class="rp1-error" id="rp1PhoneError"></div>
+              </div>
+
+              <div class="rp1-field">
+                <label for="rp1Role" class="rp1-label">Role</label>
+                <div class="rp1-input-icon rp1-select-wrap">
+                  <i class="bi bi-person-badge"></i>
+                  <select class="rp1-input rp1-select" id="rp1Role" name="role" required>
+                    <option value="" disabled selected>Select your role</option>
+                    <option value="student">Student</option>
+                    <option value="faculty">Faculty</option>
+                  </select>
+                  <i class="bi bi-chevron-down rp1-select-caret"></i>
+                </div>
+                <div class="rp1-error" id="rp1RoleError"></div>
+              </div>
+
+              <div class="rp1-field">
+                <label for="rp1Password" class="rp1-label">Password</label>
+                <div class="rp1-input-icon">
+                  <i class="bi bi-lock"></i>
+                  <input type="password" class="rp1-input" id="rp1Password" name="password" placeholder="Create a password" autocomplete="new-password" required>
+                  <button type="button" class="rp1-password-toggle" id="rp1PasswordToggle" aria-label="Show password">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
+
+                <div class="rp1-strength-meter">
+                  <div class="rp1-strength-track">
+                    <div class="rp1-strength-fill" id="rp1StrengthFill"></div>
+                  </div>
+                  <span class="rp1-strength-label" id="rp1StrengthLabel">Password strength</span>
+                </div>
+
+                <ul class="rp1-rules-list" id="rp1RulesList">
+                  <li data-rule="length"><i class="bi bi-circle"></i> At least 8 characters</li>
+                  <li data-rule="upper"><i class="bi bi-circle"></i> One uppercase letter</li>
+                  <li data-rule="lower"><i class="bi bi-circle"></i> One lowercase letter</li>
+                  <li data-rule="number"><i class="bi bi-circle"></i> One number</li>
+                  <li data-rule="special"><i class="bi bi-circle"></i> One special character</li>
+                </ul>
+                <div class="rp1-error" id="rp1PasswordError"></div>
+              </div>
+
+              <div class="rp1-field">
+                <label for="rp1ConfirmPassword" class="rp1-label">Confirm Password</label>
+                <div class="rp1-input-icon">
+                  <i class="bi bi-lock-fill"></i>
+                  <input type="password" class="rp1-input" id="rp1ConfirmPassword" name="confirm_password" placeholder="Re-enter your password" autocomplete="new-password" required>
+                  <button type="button" class="rp1-password-toggle" id="rp1ConfirmPasswordToggle" aria-label="Show password">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
+                <div class="rp1-error" id="rp1ConfirmPasswordError"></div>
+              </div>
+
+              <div class="rp1-field rp1-terms-row">
+                <div class="rp1-checkbox">
+                  <input type="checkbox" id="rp1Terms" name="terms" required>
+                  <label for="rp1Terms">I agree to the <a href="#">Terms &amp; Conditions</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+                <div class="rp1-error" id="rp1TermsError"></div>
+              </div>
+
+              <button type="submit" class="rp1-submit-btn" id="rp1RegisterSubmit" disabled>
+                Create Account <i class="bi bi-arrow-right"></i>
+              </button>
+
+              <div class="rp1-divider"><span>or continue with</span></div>
+
+              <button type="button" class="rp1-google-btn" id="rp1GoogleRegister">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.91c1.7-1.57 2.69-3.88 2.69-6.62z"/>
+                  <path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.91-2.26c-.81.54-1.84.86-3.05.86-2.34 0-4.33-1.58-5.04-3.7H.94v2.33A9 9 0 0 0 9 18z"/>
+                  <path fill="#FBBC05" d="M3.96 10.72A5.4 5.4 0 0 1 3.68 9c0-.6.1-1.18.28-1.72V4.95H.94A9 9 0 0 0 0 9c0 1.45.35 2.83.94 4.05l3.02-2.33z"/>
+                  <path fill="#EA4335" d="M9 3.58c1.32 0 2.51.45 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0A9 9 0 0 0 .94 4.95l3.02 2.33C4.67 5.16 6.66 3.58 9 3.58z"/>
+                </svg>
+                Continue with Google
+              </button>
+
+              <p class="rp1-switch-text">
+                Already have an account? <a href="loginpage1.html">Log in</a>
+              </p>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER — sibling of the section, never inside the row ============ -->
+<footer class="rp1-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <a href="index.html" class="rp1-logo rp1-footer-logo">
+          <span class="rp1-logo-mark">
+            <svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#rp1LogoGrad3)"/>
+              <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+              <defs>
+                <linearGradient id="rp1LogoGrad3" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#2563EB"/>
+                  <stop offset="1" stop-color="#7C3AED"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+          <span class="rp1-logo-text">Quiz<span class="rp1-grad-word">Craft</span></span>
+        </a>
+        <p class="rp1-footer-about">Adaptive quizzes that adjust to your level in real time — built to make focused practice a daily habit.</p>
+        <div class="rp1-footer-socials">
+          <a href="#"><i class="bi bi-twitter-x"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-github"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <h6 class="rp1-footer-title">Quick Links</h6>
+        <ul class="rp1-footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#subjects">Subjects</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <h6 class="rp1-footer-title">Subjects</h6>
+        <ul class="rp1-footer-links">
+          <li><a href="index.html#subjects">Python</a></li>
+          <li><a href="index.html#subjects">Java</a></li>
+          <li><a href="index.html#subjects">Web Development</a></li>
+          <li><a href="index.html#subjects">DBMS</a></li>
+          <li><a href="index.html#subjects">Machine Learning</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <h6 class="rp1-footer-title">Contact</h6>
+        <ul class="rp1-footer-links">
+          <li><i class="bi bi-envelope"></i> hello@quizcraft.app</li>
+          <li><i class="bi bi-telephone"></i> +91 98765 43210</li>
+          <li><i class="bi bi-geo-alt"></i> Mumbai, Maharashtra, India</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="rp1-footer-divider">
+
+    <div class="rp1-footer-bottom">
+      <p>© <span id="rp1Year"></span> QuizCraft. All rights reserved.</p>
+      <p>Designed for smarter learning.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<!-- Google Identity Services: real "Continue with Google" sign-up.
+     See the GOOGLE_CLIENT_ID note at the top of js/registerpage1.js. -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="js/registerpage1.js"></script>
+</body>
+</html>

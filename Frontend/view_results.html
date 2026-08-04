@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>View Results — QuizCraft</title>
+<meta name="description" content="Student quiz results, scores and performance analytics on QuizCraft." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/question.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-require-role="faculty">
+
+<div class="qc-bg-layer">
+  <div class="qc-bg-grid"></div>
+  <div class="qc-blur-circle qc-blur-1"></div>
+  <div class="qc-blur-circle qc-blur-2"></div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="qc-navbar" id="qcNavbar">
+  <div class="container qc-navbar-inner">
+    <a href="index.html" class="qc-logo">
+      <span class="qc-logo-mark">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#vrLogoGrad)"/>
+          <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+          <defs><linearGradient id="vrLogoGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+        </svg>
+      </span>
+      <span>Quiz<span class="qc-grad-word">Craft</span></span>
+    </a>
+
+    <button class="qc-burger d-lg-none" id="qcBurger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+
+    <div class="qc-nav-links" id="qcNavLinks">
+      <a href="faculty_dashboard.html">Dashboard</a>
+      <a href="manage_questions.html">Manage Questions</a>
+      <a href="add_question.html">Add Question</a>
+      <a href="view_results.html" class="active">Results</a>
+      <a href="profile.html">Profile</a>
+    </div>
+
+    <div class="qc-nav-actions">
+      <button class="qc-theme-toggle" id="qcThemeToggle" aria-label="Toggle dark mode"><i class="bi bi-moon-stars-fill"></i></button>
+      <a href="profile.html" class="qc-nav-avatar" title="Account">U</a>
+      <button class="qc-nav-icon-btn qc-hide-sm-down" id="qcLogoutBtn" aria-label="Logout" title="Logout"><i class="bi bi-box-arrow-right"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ PAGE HEADER ============ -->
+<section class="qp-page-header">
+  <div class="container">
+    <div class="qp-page-header-inner" data-aos="fade-up">
+      <div>
+        <h1>Student <span class="qc-grad-word">Results</span></h1>
+        <p>Every quiz attempt across your subjects, in one place.</p>
+      </div>
+      <div class="qp-page-actions">
+        <button class="qc-btn qc-btn-primary qc-ripple qp-export-btn" id="vrExportBtn"><i class="bi bi-download"></i> Export CSV</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUMMARY CHARTS ============ -->
+<section class="qc-section" style="padding-top:24px; padding-bottom:10px;">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-7" data-aos="fade-up">
+        <div class="qc-card dash-panel">
+          <div class="dash-panel-head">
+            <div>
+              <h4>Average Score by Subject</h4>
+              <p>Across all recorded attempts</p>
+            </div>
+          </div>
+          <div class="dash-chart-wrap">
+            <canvas id="vrSubjectChart" height="240"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5" data-aos="fade-up" data-aos-delay="80">
+        <div class="qc-card dash-panel">
+          <div class="dash-panel-head">
+            <div>
+              <h4>Pass / Fail Distribution</h4>
+              <p>Passing threshold: 50%</p>
+            </div>
+          </div>
+          <div class="dash-chart-wrap dash-doughnut-wrap">
+            <canvas id="vrPassChart" height="200"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOLBAR + TABLE ============ -->
+<section class="qc-section" style="padding-top:14px;">
+  <div class="container">
+
+    <div class="qc-card qp-toolbar" data-aos="fade-up">
+      <div class="qp-search-box">
+        <i class="bi bi-search"></i>
+        <input type="text" id="vrSearchInput" placeholder="Search by student name…">
+      </div>
+      <select class="qp-filter-select" id="vrSubjectFilter">
+        <option value="all">All Subjects</option>
+        <option value="python">Python</option>
+        <option value="java">Java</option>
+        <option value="cpp">C++</option>
+        <option value="webdev">Web Development</option>
+        <option value="dbms">DBMS</option>
+        <option value="ml">Machine Learning</option>
+      </select>
+    </div>
+
+    <div class="qc-card qp-table-card" data-aos="fade-up" data-aos-delay="80">
+      <div class="qp-table-wrap">
+        <table class="qp-table">
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Subject</th>
+              <th>Score</th>
+              <th>Percentage</th>
+              <th>Difficulty</th>
+              <th>Attempt Date</th>
+            </tr>
+          </thead>
+          <tbody id="vrTableBody">
+            <!-- rows injected by js/faculty.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="qp-pagination">
+        <span class="qp-pagination-info" id="vrPaginationInfo">Showing 0 of 0 results</span>
+        <div class="qp-pagination-buttons" id="vrPaginationButtons"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="qc-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <a href="index.html" class="qc-logo qc-footer-logo">
+          <span class="qc-logo-mark">
+            <svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#vrFootGrad)"/>
+              <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+              <defs><linearGradient id="vrFootGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+            </svg>
+          </span>
+          <span>Quiz<span class="qc-grad-word">Craft</span></span>
+        </a>
+        <p class="qc-footer-about">Adaptive quizzes that adjust to student level in real time.</p>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Faculty Tools</h6>
+        <ul class="qc-footer-links">
+          <li><a href="faculty_dashboard.html">Dashboard</a></li>
+          <li><a href="add_question.html">Add Question</a></li>
+          <li><a href="manage_questions.html">Manage Questions</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Support</h6>
+        <ul class="qc-footer-links">
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Contact</h6>
+        <ul class="qc-footer-links">
+          <li><i class="bi bi-envelope"></i> hello@quizcraft.app</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="qc-footer-divider">
+    <div class="qc-footer-bottom">
+      <p>© <span id="qcYear"></span> QuizCraft. All rights reserved.</p>
+      <p>Designed for smarter learning.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+<script src="js/common.js"></script>
+<script src="js/faculty.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+/* =========================================================
+   QUIZCRAFT — css/faculty.css
+   Faculty module styles. Reuses shared tokens (pages.css)
+   and the stat-card / panel / leaderboard / legend patterns
+   already defined in dashboard.css — only genuinely new
+   components (welcome banner, notifications, activity list,
+   category cards) are defined here to avoid duplicate CSS.
+   ========================================================= */
+
+/* ---------- Welcome section ---------- */
+.fac-hero-section{ padding-top: 56px; padding-bottom: 10px; }
+.fac-welcome-card{
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 44px 48px;
+}
+.fac-welcome-text{ max-width: 680px; }
+.fac-welcome-text h1{ font-size: clamp(1.6rem, 3vw, 2.2rem); margin: 16px 0 12px; }
+.fac-welcome-text p{ font-size: .96rem; line-height: 1.7; color: var(--text-body); margin-bottom: 26px; }
+.fac-quick-actions{ display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ---------- Stat grid wrapper ---------- */
+.fac-stats-section{ padding: 20px 0; }
+.fac-stat-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+
+/* ---------- Notifications panel ---------- */
+.fac-notif-panel{
+  position: fixed;
+  top: calc(var(--nav-h, 84px) + 12px);
+  right: 24px;
+  z-index: 1100;
+  width: 340px;
+  max-width: calc(100vw - 32px);
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  animation: facNotifIn .25s ease;
+}
+@keyframes facNotifIn{
+  from{ opacity: 0; transform: translateY(-10px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+.fac-notif-head{
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.fac-notif-head h6{ margin: 0; font-size: .95rem; }
+.fac-notif-head button{
+  border: none; background: transparent; color: var(--text-muted);
+  cursor: pointer; font-size: .95rem;
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s ease, color .2s ease;
+}
+.fac-notif-head button:hover{ background: rgba(15,23,42,.06); color: var(--text-heading); }
+.fac-notif-list{ max-height: 360px; overflow-y: auto; }
+.fac-notif-list li{
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-soft);
+  transition: background .2s ease;
+}
+.fac-notif-list li:last-child{ border-bottom: none; }
+.fac-notif-list li:hover{ background: rgba(15,23,42,.02); }
+.fac-notif-icon{
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; color: #fff; flex-shrink: 0;
+}
+.fac-notif-list p{ margin: 0 0 3px; font-size: .82rem; color: var(--text-heading); line-height: 1.5; }
+.fac-notif-list span{ font-size: .72rem; color: var(--text-muted); }
+
+/* ---------- Recent activity list ---------- */
+.fac-activity-list{ display: flex; flex-direction: column; gap: 6px; }
+.fac-activity-list li{
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 12px 8px;
+  border-radius: 12px;
+  transition: background .2s ease;
+}
+.fac-activity-list li:hover{ background: rgba(15,23,42,.03); }
+.fac-activity-icon{
+  width: 42px; height: 42px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; color: #fff; flex-shrink: 0;
+}
+.fac-activity-info p{ margin: 0 0 3px; font-size: .87rem; color: var(--text-heading); line-height: 1.5; }
+.fac-activity-info span{ font-size: .76rem; color: var(--text-muted); }
+
+/* ---------- Question category cards ---------- */
+.fac-category-card{
+  display: block;
+  height: 100%;
+  padding: 28px 16px;
+  text-align: center;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s ease, box-shadow .3s ease;
+  color: var(--text-heading);
+}
+.fac-category-card:hover{ transform: translateY(-6px); box-shadow: var(--shadow-lg); color: var(--text-heading); }
+.fac-category-card i{ font-size: 1.9rem; color: var(--primary); margin-bottom: 12px; display: block; }
+.fac-category-card h6{ font-size: .84rem; font-weight: 700; margin-bottom: 8px; }
+.fac-category-card span{ font-size: .74rem; color: var(--text-muted); font-weight: 600; }
+
+@media (max-width: 767.98px){
+  .fac-welcome-card{ padding: 32px 26px; }
+  .fac-stat-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 575.98px){
+  .fac-notif-panel{ right: 16px; left: 16px; width: auto; }
+}

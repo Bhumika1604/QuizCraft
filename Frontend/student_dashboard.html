@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Student Dashboard — QuizCraft</title>
+<meta name="description" content="Your QuizCraft dashboard — track progress, performance and adaptive quiz recommendations." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-require-role="student">
+
+<div class="qc-bg-layer">
+  <div class="qc-bg-grid"></div>
+  <div class="qc-blur-circle qc-blur-1"></div>
+  <div class="qc-blur-circle qc-blur-2"></div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="qc-navbar" id="qcNavbar">
+  <div class="container qc-navbar-inner">
+    <a href="index.html" class="qc-logo">
+      <span class="qc-logo-mark">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#dashLogoGrad)"/>
+          <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+          <defs>
+            <linearGradient id="dashLogoGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      <span>Quiz<span class="qc-grad-word">Craft</span></span>
+    </a>
+
+    <button class="qc-burger d-lg-none" id="qcBurger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+
+    <div class="qc-nav-links" id="qcNavLinks">
+      <a href="student_dashboard.html" class="active">Dashboard</a>
+      <a href="quiz.html">Take a Quiz</a>
+      <a href="history.html">History</a>
+      <a href="subjects.html">Subjects</a>
+      <a href="profile.html">Profile</a>
+    </div>
+
+    <div class="qc-nav-actions">
+      <button class="qc-theme-toggle" id="qcThemeToggle" aria-label="Toggle dark mode"><i class="bi bi-moon-stars-fill"></i></button>
+      <button class="qc-nav-icon-btn qc-hide-sm-down" aria-label="Notifications">
+        <i class="bi bi-bell"></i><span class="qc-notif-dot"></span>
+      </button><a href="profile.html" class="qc-nav-avatar" id="studentAvatar">A</a>
+      <button class="qc-nav-icon-btn qc-hide-sm-down" id="qcLogoutBtn" aria-label="Logout" title="Logout"><i class="bi bi-box-arrow-right"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ WELCOME HERO ============ -->
+<section class="qc-section dash-hero-section">
+  <div class="container">
+    <div class="dash-welcome-card" data-reveal>
+      <div class="dash-welcome-text">
+        <span class="qc-badge qc-badge-cyan"><span class="dash-pulse-dot"></span> 7 day streak active</span>
+        <h1>Welcome back,<span class="qc-grad-word" id="studentName">Loading...</span>👋</h1>
+        <p>You're 32% through Python · Loops &amp; Iteration. Keep going — the adaptive engine has 4 new questions calibrated to your level.</p>
+        <a href="quiz.html" class="qc-btn qc-btn-primary qc-ripple">
+          <i class="bi bi-play-circle-fill"></i> Start Quiz
+        </a>
+      </div>
+      <div class="dash-welcome-art">
+        <div class="dash-ring-badge">
+          <svg viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="52" class="dash-ring-bg"/>
+            <circle cx="60" cy="60" r="52" class="dash-ring-fg"/>
+          </svg>
+          <div class="dash-ring-center">
+            <span class="dash-ring-value">82%</span>
+            <span class="dash-ring-label">Accuracy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAT CARDS ============ -->
+<section class="qc-section dash-stats-section">
+  <div class="container">
+    <div class="dash-stat-grid qc-stat-grid" data-reveal>
+      <div class="qc-card dash-stat-card">
+        <div class="dash-stat-icon icon-blue"><i class="bi bi-collection-play"></i></div>
+        <div>
+          <h3><span class="qc-counter" id="studStatQuizzes" data-target="0">0</span></h3>
+          <p>Quizzes Attempted</p>
+        </div>
+      </div>
+      <div class="qc-card dash-stat-card">
+        <div class="dash-stat-icon icon-purple"><i class="bi bi-graph-up-arrow"></i></div>
+        <div>
+          <h3><span class="qc-counter" id="studStatAvgScore" data-target="0">0</span>%</h3>
+          <p>Average Score</p>
+        </div>
+      </div>
+      <div class="qc-card dash-stat-card">
+        <div class="dash-stat-icon icon-cyan"><i class="bi bi-fire"></i></div>
+        <div>
+          <h3><span class="qc-counter" id="studStatStreak" data-target="0">0</span></h3>
+          <p>Day Streak</p>
+        </div>
+      </div>
+      <div class="qc-card dash-stat-card">
+        <div class="dash-stat-icon icon-orange"><i class="bi bi-trophy"></i></div>
+        <div>
+          <h3>#<span class="qc-counter" id="studStatRank" data-target="0">0</span></h3>
+          <p>Leaderboard Rank</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PERFORMANCE + ADAPTIVE LEARNING ============ -->
+<section class="qc-section dash-charts-section">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-8" data-reveal>
+        <div class="qc-card dash-panel">
+          <div class="dash-panel-head">
+            <div>
+              <h4>Performance Overview</h4>
+              <p>Accuracy trend across your last 7 quiz attempts</p>
+            </div>
+            <span class="qc-badge qc-badge-green"><i class="bi bi-arrow-up-short"></i> +9% this week</span>
+          </div>
+          <div class="dash-chart-wrap">
+            <canvas id="performanceChart" height="260"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4" data-reveal data-reveal-delay="80">
+        <div class="qc-card dash-panel dash-adaptive-card">
+          <div class="dash-panel-head">
+            <div>
+              <h4>Adaptive Learning</h4>
+              <p>Your current question difficulty mix</p>
+            </div>
+          </div>
+          <div class="dash-chart-wrap dash-doughnut-wrap">
+            <canvas id="adaptiveChart" height="200"></canvas>
+          </div>
+          <ul class="dash-legend">
+            <li><span class="dot dot-easy"></span> Easy — 20%</li>
+            <li><span class="dot dot-medium"></span> Medium — 48%</li>
+            <li><span class="dot dot-hard"></span> Hard — 32%</li>
+          </ul>
+          <p class="dash-adaptive-note"><i class="bi bi-cpu"></i> Difficulty is rising as your accuracy improves.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECENT / UPCOMING QUIZ + LEADERBOARD ============ -->
+<section class="qc-section dash-lists-section">
+  <div class="container">
+    <div class="row g-4">
+
+      <div class="col-lg-4" data-reveal>
+        <div class="qc-card dash-panel">
+          <h4 class="dash-panel-title">Recent Quiz</h4>
+          <div class="dash-quiz-item">
+            <div class="dash-quiz-icon icon-blue"><i class="bi bi-filetype-py"></i></div>
+            <div class="dash-quiz-info">
+              <p class="title">Python · Loops &amp; Iteration</p>
+              <p class="meta">Scored 17/20 · 2 hours ago</p>
+            </div>
+            <span class="qc-badge qc-badge-green">85%</span>
+          </div>
+          <a href="history.html" class="dash-panel-link">View full history <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4" data-reveal data-reveal-delay="80">
+        <div class="qc-card dash-panel">
+          <h4 class="dash-panel-title">Upcoming Quiz</h4>
+          <div class="dash-quiz-item">
+            <div class="dash-quiz-icon icon-purple"><i class="bi bi-database-fill"></i></div>
+            <div class="dash-quiz-info">
+              <p class="title">DBMS · Normalization</p>
+              <p class="meta">Recommended · Not started</p>
+            </div>
+            <span class="qc-badge qc-badge-purple">New</span>
+          </div>
+          <a href="quiz.html" class="dash-panel-link">Start now <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4" data-reveal data-reveal-delay="160">
+        <div class="qc-card dash-panel">
+          <h4 class="dash-panel-title">Leaderboard</h4>
+          <!-- BUG FIX: was 3 hardcoded names/scores (including a fake
+               "Aarav Mehta (You)" row that would misidentify whoever
+               was actually logged in). js/dashboard.js now populates
+               this from GET /users/leaderboard/ and highlights whichever
+               row matches the real logged-in student's name. -->
+          <ul class="dash-leaderboard" id="studentLeaderboardList">
+            <li class="fac-activity-loading">
+              <span class="lb-name">Loading leaderboard…</span>
+            </li>
+          </ul>
+          <a href="history.html" class="dash-panel-link">See full leaderboard <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUBJECTS PROGRESS ============ -->
+<section class="qc-section dash-subjects-section">
+  <div class="container">
+    <div class="qc-section-heading" data-reveal>
+      <span class="qc-eyebrow">Continue Learning</span>
+      <h2>Your <span class="qc-grad-word">Subjects</span></h2>
+    </div>
+
+    <div class="row g-4" id="subjectsContainer">
+
+</div>
+</div>
+</section>
+
+<!-- ============ ACHIEVEMENTS ============ -->
+<section class="qc-section dash-achievements-section">
+  <div class="container">
+    <div class="qc-section-heading" data-reveal>
+      <span class="qc-eyebrow">Milestones</span>
+      <h2>Your <span class="qc-grad-word">Achievements</span></h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-6 col-md-3" data-reveal>
+        <div class="dash-badge-card earned">
+          <i class="bi bi-patch-check-fill"></i>
+          <h6>First Quiz</h6>
+          <span>Earned</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-reveal data-reveal-delay="80">
+        <div class="dash-badge-card earned">
+          <i class="bi bi-fire"></i>
+          <h6>7 Day Streak</h6>
+          <span>Earned</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-reveal data-reveal-delay="160">
+        <div class="dash-badge-card">
+          <i class="bi bi-trophy-fill"></i>
+          <h6>Top 10 Rank</h6>
+          <span>Locked</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-reveal data-reveal-delay="240">
+        <div class="dash-badge-card">
+          <i class="bi bi-mortarboard-fill"></i>
+          <h6>Subject Master</h6>
+          <span>Locked</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="qc-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <a href="index.html" class="qc-logo qc-footer-logo">
+          <span class="qc-logo-mark">
+            <svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#dashFootGrad)"/>
+              <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+              <defs><linearGradient id="dashFootGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+            </svg>
+          </span>
+          <span>Quiz<span class="qc-grad-word">Craft</span></span>
+        </a>
+        <p class="qc-footer-about">Adaptive quizzes that adjust to your level in real time — built to make focused practice a daily habit.</p>
+        <div class="qc-footer-socials">
+          <a href="#"><i class="bi bi-twitter-x"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-github"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Quick Links</h6>
+        <ul class="qc-footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="student_dashboard.html">Dashboard</a></li>
+          <li><a href="quiz.html">Take a Quiz</a></li>
+          <li><a href="history.html">History</a></li>
+          <li><a href="profile.html">Profile</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Subjects</h6>
+        <ul class="qc-footer-links">
+          <li><a href="subjects.html">Python</a></li>
+          <li><a href="subjects.html">Java</a></li>
+          <li><a href="subjects.html">Web Development</a></li>
+          <li><a href="subjects.html">DBMS</a></li>
+          <li><a href="subjects.html">Machine Learning</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Contact</h6>
+        <ul class="qc-footer-links">
+          <li><i class="bi bi-envelope"></i> hello@quizcraft.app</li>
+          <li><i class="bi bi-telephone"></i> +91 98765 43210</li>
+          <li><i class="bi bi-geo-alt"></i> Mumbai, Maharashtra, India</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="qc-footer-divider">
+    <div class="qc-footer-bottom">
+      <p>© <span id="qcYear"></span> QuizCraft. All rights reserved.</p>
+      <p>Designed for smarter learning.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

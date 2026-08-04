@@ -1,0 +1,36 @@
+/* =========================================================
+   QUIZCRAFT — css/footer.css
+   Shared footer. Same visual design as the existing
+   Homepage footer. Reused by every new page.
+   ========================================================= */
+
+.qc-footer{
+  background: var(--dark);
+  color: #CBD5E1;
+  padding: 60px 0 26px;
+  position: relative;
+  z-index: 1;
+}
+.qc-footer-logo{ color: #fff; margin-bottom: 14px; }
+.qc-footer-about{ font-size: .88rem; line-height: 1.7; color: #94A3B8; margin: 14px 0 20px; max-width: 280px; }
+.qc-footer-socials{ display: flex; gap: 12px; }
+.qc-footer-socials a{
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.06);
+  display: flex; align-items: center; justify-content: center;
+  transition: background .25s ease, transform .25s ease;
+}
+.qc-footer-socials a:hover{ background: var(--grad-primary); transform: translateY(-3px); }
+
+.qc-footer-title{ color: #fff; font-size: .95rem; font-weight: 700; margin-bottom: 20px; }
+.qc-footer-links{ display: flex; flex-direction: column; gap: 12px; }
+.qc-footer-links a{ font-size: .86rem; color: #94A3B8; transition: color .2s ease, padding-left .2s ease; }
+.qc-footer-links a:hover{ color: #fff; padding-left: 4px; }
+.qc-footer-links li{ font-size: .86rem; color: #94A3B8; display: flex; align-items: center; gap: 8px; }
+
+.qc-footer-divider{ border-color: rgba(255,255,255,.08); margin: 36px 0 22px; }
+.qc-footer-bottom{
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  font-size: .82rem; color: #64748B;
+}

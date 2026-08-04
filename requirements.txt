@@ -1,0 +1,21 @@
+# =========================================================
+# QUIZCRAFT — requirements.txt
+# -----------------------------------------------------------
+# WHY: no requirements file existed in this project — every
+# dependency had been installed by hand into venv/, which makes
+# the project impossible to set up reproducibly on another
+# machine (or a deployment server). This file was generated from
+# the exact package versions already installed in this project's
+# own venv/, so `pip install -r requirements.txt` recreates the
+# same environment.
+#
+# SETUP: python -m venv venv && venv\Scripts\activate (Windows)
+# or source venv/bin/activate (Mac/Linux), then:
+#   pip install -r requirements.txt
+# =========================================================
+Django==6.0.6
+djangorestframework==3.17.1
+django-cors-headers==4.9.0
+pymongo==4.17.0
+asgiref==3.11.1
+sqlparse==0.5.5

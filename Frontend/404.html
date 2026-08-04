@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Page Not Found — QuizCraft</title>
+<meta name="description" content="The page you're looking for doesn't exist." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div class="qc-bg-layer">
+  <div class="qc-bg-grid"></div>
+  <div class="qc-blur-circle qc-blur-1"></div>
+  <div class="qc-blur-circle qc-blur-2"></div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="qc-navbar" id="qcNavbar">
+  <div class="container qc-navbar-inner">
+    <a href="index.html" class="qc-logo">
+      <span class="qc-logo-mark">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#e404LogoGrad)"/>
+          <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+          <defs><linearGradient id="e404LogoGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+        </svg>
+      </span>
+      <span>Quiz<span class="qc-grad-word">Craft</span></span>
+    </a>
+
+    <button class="qc-burger d-lg-none" id="qcBurger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+
+    <div class="qc-nav-links" id="qcNavLinks">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="subjects.html">Subjects</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="qc-nav-actions">
+      <button class="qc-theme-toggle" id="qcThemeToggle" aria-label="Toggle dark mode"><i class="bi bi-moon-stars-fill"></i></button>
+      <a href="loginpage1.html" class="qc-btn-ghost">Log in</a>
+      <a href="registerpage1.html" class="qc-btn-grad">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ 404 CONTENT ============ -->
+<section class="qc-404-section">
+  <div class="container text-center" data-reveal>
+
+    <div class="qc-404-illustration qc-404-float">
+      <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="auto">
+        <defs>
+          <linearGradient id="e404CardGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2563EB"/>
+            <stop offset="1" stop-color="#7C3AED"/>
+          </linearGradient>
+        </defs>
+        <circle cx="140" cy="100" r="88" fill="url(#e404CardGrad)" opacity="0.08"/>
+        <rect x="72" y="58" width="136" height="92" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+        <rect x="90" y="80" width="100" height="10" rx="5" fill="#E2E8F0"/>
+        <rect x="90" y="100" width="70" height="10" rx="5" fill="#E2E8F0"/>
+        <circle cx="103" cy="126" r="10" fill="#06B6D4"/>
+        <path d="M99 126l3 3 6-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="208" cy="58" r="20" fill="#F59E0B"/>
+        <text x="208" y="65" font-size="20" font-weight="700" fill="#fff" text-anchor="middle" font-family="Poppins, sans-serif">?</text>
+      </svg>
+    </div>
+
+    <div class="qc-404-number">404</div>
+    <h1 style="font-size:clamp(1.4rem,2.8vw,1.9rem); margin:14px 0 12px;">This page wandered off-topic</h1>
+    <p style="color:var(--text-body); max-width:480px; margin:0 auto 30px;">
+      The page you're looking for doesn't exist, was moved, or the link might be broken. Let's get you back to solid ground.
+    </p>
+
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a href="index.html" class="qc-btn qc-btn-primary qc-ripple"><i class="bi bi-house-door-fill"></i> Go Home</a>
+      <a href="contact.html" class="qc-btn qc-btn-outline qc-ripple"><i class="bi bi-life-preserver"></i> Contact Support</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="qc-footer">
+  <div class="container">
+    <div class="qc-footer-bottom">
+      <p>© <span id="qcYear"></span> QuizCraft. All rights reserved.</p>
+      <p>Designed for smarter learning.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+/* =========================================================
+   QUIZCRAFT — css/dashboard.css
+   Student dashboard page-specific styles. Builds on the
+   shared tokens/cards/badges defined in pages.css.
+   ========================================================= */
+
+.dash-pulse-dot{
+  width: 7px; height: 7px; border-radius: 50%;
+  background: currentColor; display: inline-block;
+  animation: dashPulse 1.8s infinite;
+}
+@keyframes dashPulse{
+  0%{ box-shadow: 0 0 0 0 rgba(6,182,212,.5); }
+  70%{ box-shadow: 0 0 0 8px rgba(6,182,212,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(6,182,212,0); }
+}
+
+/* ---------- Welcome hero ---------- */
+.dash-hero-section{ padding-top: 56px; padding-bottom: 20px; }
+.dash-welcome-card{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 44px 48px;
+  flex-wrap: wrap;
+}
+.dash-welcome-text{ max-width: 560px; }
+.dash-welcome-text h1{ font-size: clamp(1.6rem, 3vw, 2.2rem); margin: 16px 0 12px; }
+.dash-welcome-text p{ font-size: .96rem; line-height: 1.7; color: var(--text-body); margin-bottom: 24px; }
+
+.dash-ring-badge{ position: relative; width: 140px; height: 140px; flex-shrink: 0; }
+.dash-ring-badge svg{ width: 100%; height: 100%; transform: rotate(-90deg); }
+.dash-ring-bg{ fill: none; stroke: var(--border-soft); stroke-width: 9; }
+.dash-ring-fg{
+  fill: none; stroke: url(#ringGradFallback), var(--primary); stroke-width: 9; stroke-linecap: round;
+  stroke: var(--primary);
+  stroke-dasharray: 326.7; stroke-dashoffset: 58.8; /* 82% */
+}
+.dash-ring-center{
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.dash-ring-value{ font-size: 1.5rem; font-weight: 800; color: var(--text-heading); }
+.dash-ring-label{ font-size: .72rem; color: var(--text-muted); font-weight: 600; }
+
+/* ---------- Stat cards ---------- */
+.dash-stats-section{ padding-top: 20px; padding-bottom: 20px; }
+.qc-stat-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.dash-stat-card{
+  padding: 26px; display: flex; align-items: center; gap: 16px;
+}
+.dash-stat-icon{
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; color: #fff; flex-shrink: 0;
+}
+.icon-blue{ background: linear-gradient(135deg,#3B82F6,#2563EB); }
+.icon-purple{ background: linear-gradient(135deg,#A855F7,#7C3AED); }
+.icon-cyan{ background: linear-gradient(135deg,#22D3EE,#06B6D4); }
+.icon-orange{ background: linear-gradient(135deg,#FBBF24,#F59E0B); }
+.dash-stat-card h3{ font-size: 1.5rem; margin-bottom: 2px; }
+.dash-stat-card p{ margin: 0; font-size: .82rem; color: var(--text-muted); font-weight: 500; }
+
+/* ---------- Chart panels ---------- */
+.dash-panel{ padding: 30px; height: 100%; }
+.dash-panel-head{ display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
+.dash-panel-head h4{ font-size: 1.1rem; margin-bottom: 4px; }
+.dash-panel-head p{ margin: 0; font-size: .82rem; color: var(--text-muted); }
+.dash-panel-title{ font-size: 1.05rem; margin-bottom: 20px; }
+
+.dash-chart-wrap{ position: relative; width: 100%; }
+.dash-doughnut-wrap{ max-width: 220px; margin: 0 auto; }
+
+.dash-adaptive-card .dash-legend{ display: flex; flex-direction: column; gap: 10px; margin: 20px 0 16px; }
+.dash-legend li{ display: flex; align-items: center; gap: 10px; font-size: .84rem; color: var(--text-body); }
+.dash-legend .dot{ width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.dot-easy{ background: #10B981; }
+.dot-medium{ background: #F59E0B; }
+.dot-hard{ background: #EF4444; }
+.dash-adaptive-note{
+  font-size: .8rem; color: var(--text-muted);
+  background: rgba(37,99,235,.06);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin: 0;
+  display: flex; align-items: center; gap: 8px;
+}
+.dash-adaptive-note i{ color: var(--primary); }
+
+/* ---------- Recent / Upcoming quiz + Leaderboard ---------- */
+.dash-quiz-item{ display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+.dash-quiz-icon{
+  width: 46px; height: 46px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; color: #fff; flex-shrink: 0;
+}
+.dash-quiz-info{ flex: 1; min-width: 0; }
+.dash-quiz-info .title{ margin: 0; font-weight: 600; font-size: .9rem; color: var(--text-heading); }
+.dash-quiz-info .meta{ margin: 0; font-size: .76rem; color: var(--text-muted); }
+.dash-panel-link{
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: .84rem; font-weight: 600; color: var(--primary);
+  transition: gap .2s ease;
+}
+.dash-panel-link:hover{ gap: 10px; color: var(--secondary); }
+
+.dash-leaderboard{ display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+.dash-leaderboard li{ display: flex; align-items: center; gap: 12px; padding: 8px; border-radius: 12px; transition: background .2s ease; }
+.dash-leaderboard li.is-you{ background: rgba(37,99,235,.06); }
+.dash-leaderboard li:hover{ background: rgba(15,23,42,.03); }
+.dash-leaderboard .rank{
+  width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .74rem; font-weight: 700;
+  background: rgba(15,23,42,.06); color: var(--text-body); flex-shrink: 0;
+}
+.dash-leaderboard .rank.gold{ background: #FDE68A; color: #92400E; }
+.dash-leaderboard .rank.silver{ background: #E2E8F0; color: #475569; }
+.dash-leaderboard .lb-avatar{
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--grad-primary); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .72rem; font-weight: 700; flex-shrink: 0;
+}
+.dash-leaderboard .lb-name{ flex: 1; font-size: .85rem; font-weight: 500; color: var(--text-heading); }
+.dash-leaderboard .lb-score{ font-size: .82rem; font-weight: 700; color: var(--text-heading); }
+
+/* ---------- Subject progress cards ---------- */
+.dash-subject-card{
+  height: 100%;
+  padding: 26px 16px;
+  text-align: center;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.dash-subject-card:hover{ transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.dash-subject-card i{ font-size: 1.9rem; color: var(--primary); margin-bottom: 12px; display: block; }
+.dash-subject-card h6{ font-size: .84rem; font-weight: 700; margin-bottom: 12px; color: var(--text-heading); }
+.dash-subject-card span{ display: block; margin-top: 8px; font-size: .74rem; color: var(--text-muted); font-weight: 600; }
+
+/* ---------- Achievement badges ---------- */
+.dash-badge-card{
+  height: 100%;
+  padding: 30px 16px;
+  text-align: center;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-sm);
+  opacity: .55;
+  transition: transform .3s ease, box-shadow .3s ease, opacity .3s ease;
+}
+.dash-badge-card.earned{ opacity: 1; }
+.dash-badge-card:hover{ transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.dash-badge-card i{ font-size: 2.2rem; margin-bottom: 14px; display: block; color: var(--text-muted); }
+.dash-badge-card.earned i{ color: #F59E0B; }
+.dash-badge-card h6{ font-size: .88rem; font-weight: 700; margin-bottom: 6px; color: var(--text-heading); }
+.dash-badge-card span{ font-size: .74rem; color: var(--text-muted); font-weight: 600; }
+.dash-badge-card.earned span{ color: #0F9D6A; }
+
+@media (max-width: 767.98px){
+  .dash-welcome-card{ padding: 32px 26px; text-align: center; justify-content: center; }
+  .dash-welcome-text{ margin: 0 auto; }
+  .qc-stat-grid{ grid-template-columns: repeat(2, 1fr); }
+}

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Faculty Dashboard — QuizCraft</title>
+<meta name="description" content="Faculty dashboard — manage questions, track student performance and monitor quiz activity on QuizCraft." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<!-- Added for the new Subject Management panel below, which reuses
+     the qp-table / qp-modal / qp-icon-btn classes manage_questions.html
+     already defines here, instead of duplicating that CSS. -->
+<link rel="stylesheet" href="css/question.css">
+<link rel="stylesheet" href="css/faculty.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-require-role="faculty">
+
+<div class="qc-bg-layer">
+  <div class="qc-bg-grid"></div>
+  <div class="qc-blur-circle qc-blur-1"></div>
+  <div class="qc-blur-circle qc-blur-2"></div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="qc-navbar" id="qcNavbar">
+  <div class="container qc-navbar-inner">
+    <a href="index.html" class="qc-logo">
+      <span class="qc-logo-mark">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#facLogoGrad)"/>
+          <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+          <defs><linearGradient id="facLogoGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+        </svg>
+      </span>
+      <span>Quiz<span class="qc-grad-word">Craft</span></span>
+    </a>
+
+    <button class="qc-burger d-lg-none" id="qcBurger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+
+    <div class="qc-nav-links" id="qcNavLinks">
+      <a href="faculty_dashboard.html" class="active">Dashboard</a>
+      <a href="manage_questions.html">Manage Questions</a>
+      <a href="add_question.html">Add Question</a>
+      <a href="view_results.html">Results</a>
+      <a href="profile.html">Profile</a>
+    </div>
+
+    <div class="qc-nav-actions">
+      <button class="qc-theme-toggle" id="qcThemeToggle" aria-label="Toggle dark mode"><i class="bi bi-moon-stars-fill"></i></button>
+      <button class="qc-nav-icon-btn qc-hide-sm-down" id="facNotifBtn" aria-label="Notifications">
+        <i class="bi bi-bell"></i><span class="qc-notif-dot"></span>
+      </button>
+      <a href="profile.html" class="qc-nav-avatar" title="Account">U</a>
+      <button class="qc-nav-icon-btn qc-hide-sm-down" id="qcLogoutBtn" aria-label="Logout" title="Logout"><i class="bi bi-box-arrow-right"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ NOTIFICATIONS PANEL ============ -->
+<div class="fac-notif-panel d-none" id="facNotifPanel">
+  <div class="fac-notif-head">
+    <h6>Notifications</h6>
+    <button id="facNotifClose" aria-label="Close notifications"><i class="bi bi-x-lg"></i></button>
+  </div>
+  <ul class="fac-notif-list">
+    <li>
+      <div class="fac-notif-icon icon-blue"><i class="bi bi-person-check-fill"></i></div>
+      <div><p>18 students completed <strong>DBMS · Normalization</strong></p><span>10 minutes ago</span></div>
+    </li>
+    <li>
+      <div class="fac-notif-icon icon-purple"><i class="bi bi-flag-fill"></i></div>
+      <div><p>3 questions flagged for review in <strong>Python</strong></p><span>1 hour ago</span></div>
+    </li>
+    <li>
+      <div class="fac-notif-icon icon-cyan"><i class="bi bi-graph-up-arrow"></i></div>
+      <div><p>Average class score rose to <strong>76%</strong></p><span>Today</span></div>
+    </li>
+    <li>
+      <div class="fac-notif-icon icon-orange"><i class="bi bi-person-plus-fill"></i></div>
+      <div><p>5 new students registered this week</p><span>2 days ago</span></div>
+    </li>
+  </ul>
+</div>
+
+<!-- ============ WELCOME SECTION ============ -->
+<section class="qc-section fac-hero-section">
+  <div class="container">
+    <div class="fac-welcome-card" data-aos="fade-up">
+      <div class="fac-welcome-text">
+        <span class="qc-badge qc-badge-purple"><i class="bi bi-mortarboard-fill"></i> Faculty Console</span>
+        <h1>Welcome back, <span class="qc-grad-word" id="facWelcomeName">Faculty</span></h1>
+        <p>Your question bank is growing steadily and student engagement is up this week. Here's a snapshot of everything happening across your subjects.</p>
+        <div class="fac-quick-actions">
+          <a href="add_question.html" class="qc-btn qc-btn-primary qc-ripple"><i class="bi bi-plus-circle"></i> Add Question</a>
+          <a href="manage_questions.html" class="qc-btn qc-btn-outline qc-ripple"><i class="bi bi-ui-checks-grid"></i> Manage Questions</a>
+          <a href="view_results.html" class="qc-btn qc-btn-outline qc-ripple"><i class="bi bi-bar-chart-line"></i> View Results</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAT CARDS ============ -->
+<section class="fac-stats-section">
+  <div class="container">
+    <div class="fac-stat-grid qc-stat-grid" data-aos="fade-up">
+      <div class="qc-card dash-stat-card">
+        <div class="dash-stat-icon icon-blue"><i class="bi bi-collection-fill"></i></div>
+        <div>
+          <h3><span class="qc-counter" id="facStatQuestions" data-target="486">0</span></h3>
+          <p>Total Questions</p>
+        </div>
+      </div>
+      <div class="qc-card dash-stat-card">
+        <div class="dash-stat-icon icon-purple"><i class="bi bi-journal-bookmark-fill"></i></div>
+        <div>
+          <h3><span class="qc-counter" id="facStatSubjects" data-target="6">0</span></h3>
+          <p>Subjects Covered</p>
+        </div>
+      </div>
+      <div class="qc-card dash-stat-card">
+        <div class="dash-stat-icon icon-cyan"><i class="bi bi-people-fill"></i></div>
+        <div>
+          <h3><span class="qc-counter" id="facStatStudents" data-target="312">0</span></h3>
+          <p>Students Attempted</p>
+        </div>
+      </div>
+      <div class="qc-card dash-stat-card">
+        <div class="dash-stat-icon icon-orange"><i class="bi bi-graph-up-arrow"></i></div>
+        <div>
+          <h3><span class="qc-counter" id="facStatAvgScore" data-target="76">0</span>%</h3>
+          <p>Average Score</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PERFORMANCE CHART + CATEGORIES ============ -->
+<section class="qc-section fac-charts-section">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-8" data-aos="fade-up">
+        <div class="qc-card dash-panel">
+          <div class="dash-panel-head">
+            <div>
+              <h4>Performance Overview</h4>
+              <p>Average student score across your subjects, last 6 weeks</p>
+            </div>
+            <span class="qc-badge qc-badge-green"><i class="bi bi-arrow-up-short"></i> +6% this month</span>
+          </div>
+          <div class="dash-chart-wrap">
+            <canvas id="facPerformanceChart" height="260"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="qc-card dash-panel">
+          <div class="dash-panel-head">
+            <div>
+              <h4>Question Difficulty Mix</h4>
+              <p>Across your full question bank</p>
+            </div>
+          </div>
+          <div class="dash-chart-wrap dash-doughnut-wrap">
+            <canvas id="facDifficultyChart" height="200"></canvas>
+          </div>
+          <ul class="dash-legend">
+            <li><span class="dot dot-easy"></span> Easy — 168 questions</li>
+            <li><span class="dot dot-medium"></span> Medium — 220 questions</li>
+            <li><span class="dot dot-hard"></span> Hard — 98 questions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECENT ACTIVITY + LEADERBOARD ============ -->
+<section class="qc-section fac-lists-section">
+  <div class="container">
+    <div class="row g-4">
+
+      <div class="col-lg-7" data-aos="fade-up">
+        <div class="qc-card dash-panel">
+          <h4 class="dash-panel-title">Recent Activity</h4>
+          <!-- BUG FIX: this used to be 5 hardcoded lines (fake student
+               names, fake "you added questions" events with no audit
+               log backing them) shown regardless of what actually
+               happened. js/faculty.js now populates this from real
+               recent quiz attempts via GET /users/recent-activity/. -->
+          <ul class="fac-activity-list" id="facActivityList">
+            <li class="fac-activity-loading">
+              <div class="fac-activity-icon icon-blue"><i class="bi bi-hourglass-split"></i></div>
+              <div class="fac-activity-info"><p>Loading recent activity…</p></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
+        <div class="qc-card dash-panel">
+          <h4 class="dash-panel-title">Top Students</h4>
+          <!-- BUG FIX: was 5 hardcoded names/scores that never changed.
+               js/faculty.js now populates this from GET /users/leaderboard/,
+               which ranks real students by their average score in MongoDB. -->
+          <ul class="dash-leaderboard" id="facLeaderboardList">
+            <li class="fac-activity-loading">
+              <span class="lb-name">Loading leaderboard…</span>
+            </li>
+          </ul>
+          <a href="view_results.html" class="dash-panel-link">View all results <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUESTION CATEGORIES ============ -->
+<section class="qc-section fac-categories-section">
+  <div class="container">
+    <div class="qc-section-heading" data-aos="fade-up">
+      <span class="qc-eyebrow">Question Bank</span>
+      <h2>Question <span class="qc-grad-word">Categories</span></h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up">
+        <a href="manage_questions.html?subject=python" class="fac-category-card">
+          <i class="bi bi-filetype-py"></i>
+          <h6>Python</h6>
+          <span>132 Questions</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="60">
+        <a href="manage_questions.html?subject=java" class="fac-category-card">
+          <i class="bi bi-cup-hot-fill"></i>
+          <h6>Java</h6>
+          <span>98 Questions</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="120">
+        <a href="manage_questions.html?subject=cpp" class="fac-category-card">
+          <i class="bi bi-braces-asterisk"></i>
+          <h6>C++</h6>
+          <span>76 Questions</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="180">
+        <a href="manage_questions.html?subject=webdev" class="fac-category-card">
+          <i class="bi bi-globe2"></i>
+          <h6>Web Dev</h6>
+          <span>84 Questions</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="240">
+        <a href="manage_questions.html?subject=dbms" class="fac-category-card">
+          <i class="bi bi-database-fill"></i>
+          <h6>DBMS</h6>
+          <span>62 Questions</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="300">
+        <a href="manage_questions.html?subject=ml" class="fac-category-card">
+          <i class="bi bi-diagram-3-fill"></i>
+          <h6>Machine Learning</h6>
+          <span>34 Questions</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUBJECT MANAGEMENT (new) ============
+     WHY: add_subject()/get_subjects() already existed on the
+     backend, but there was no faculty-facing UI to add, rename or
+     remove a subject — Subject CRUD requirement. Reuses the exact
+     qp-table / qp-modal classes manage_questions.html already
+     defines in css/faculty.css, so this looks native to the page
+     rather than a bolted-on new design. -->
+<section class="qc-section fac-subjects-section">
+  <div class="container">
+    <div class="qc-section-heading" data-aos="fade-up" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;">
+      <div>
+        <span class="qc-eyebrow">Manage</span>
+        <h2>Subject <span class="qc-grad-word">Management</span></h2>
+      </div>
+      <button class="qc-btn qc-btn-primary qc-ripple" id="subAddBtn"><i class="bi bi-plus-lg"></i> Add Subject</button>
+    </div>
+
+    <div class="qc-card qp-table-card" data-aos="fade-up" data-aos-delay="80">
+      <div class="qp-table-wrap">
+        <table class="qp-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Subject Name</th>
+              <th>Average Progress</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="subTableBody">
+            <!-- rows injected by js/faculty.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Add / Edit Subject modal (one modal, reused for both) -->
+<div class="qp-modal-backdrop d-none" id="subFormModalBackdrop">
+  <div class="qp-modal" style="max-width:420px; text-align:left;">
+    <h4 id="subFormModalTitle" style="text-align:left; margin-bottom:18px;">Add Subject</h4>
+    <input type="hidden" id="subFormId" value="">
+    <div class="mb-3">
+      <label class="form-label" for="subFormName" style="font-size:.85rem; font-weight:600;">Subject Name</label>
+      <input type="text" class="form-control" id="subFormName" placeholder="e.g. Python">
+      <div class="invalid-feedback" id="subFormError" style="display:block; color:#EF4444; font-size:.78rem; min-height:1em;"></div>
+    </div>
+    <div class="qp-modal-actions">
+      <button class="qc-btn qc-btn-outline qc-ripple" id="subFormCancel">Cancel</button>
+      <button class="qc-btn qc-btn-primary qc-ripple" id="subFormSave">Save Subject</button>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Subject confirm modal -->
+<div class="qp-modal-backdrop d-none" id="subDeleteModalBackdrop">
+  <div class="qp-modal">
+    <i class="bi bi-exclamation-triangle-fill"></i>
+    <h4>Delete this subject?</h4>
+    <p>Existing questions tagged with this subject are not deleted, but the subject card will disappear from Subject Management and the student dashboard.</p>
+    <div class="qp-modal-actions">
+      <button class="qc-btn qc-btn-outline qc-ripple" id="subDeleteCancel">Cancel</button>
+      <button class="qc-btn qc-btn-danger-outline qc-ripple" id="subDeleteConfirm">Delete</button>
+    </div>
+  </div>
+</div>
+              <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+              <defs><linearGradient id="facFootGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+            </svg>
+          </span>
+          <span>Quiz<span class="qc-grad-word">Craft</span></span>
+        </a>
+        <p class="qc-footer-about">Adaptive quizzes that adjust to student level in real time — built to make focused practice a daily habit.</p>
+        <div class="qc-footer-socials">
+          <a href="#"><i class="bi bi-twitter-x"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-github"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Faculty Tools</h6>
+        <ul class="qc-footer-links">
+          <li><a href="faculty_dashboard.html">Dashboard</a></li>
+          <li><a href="add_question.html">Add Question</a></li>
+          <li><a href="manage_questions.html">Manage Questions</a></li>
+          <li><a href="view_results.html">View Results</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Subjects</h6>
+        <ul class="qc-footer-links">
+          <li><a href="manage_questions.html?subject=python">Python</a></li>
+          <li><a href="manage_questions.html?subject=java">Java</a></li>
+          <li><a href="manage_questions.html?subject=dbms">DBMS</a></li>
+          <li><a href="manage_questions.html?subject=ml">Machine Learning</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Contact</h6>
+        <ul class="qc-footer-links">
+          <li><i class="bi bi-envelope"></i> hello@quizcraft.app</li>
+          <li><i class="bi bi-telephone"></i> +91 98765 43210</li>
+          <li><i class="bi bi-geo-alt"></i> Mumbai, Maharashtra, India</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="qc-footer-divider">
+    <div class="qc-footer-bottom">
+      <p>© <span id="qcYear"></span> QuizCraft. All rights reserved.</p>
+      <p>Designed for smarter learning.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+<script src="js/common.js"></script>
+<script src="js/faculty.js"></script>
+</body>
+</html>

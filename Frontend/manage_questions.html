@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manage Questions — QuizCraft</title>
+<meta name="description" content="Search, filter and manage your QuizCraft question bank." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/question.css">
+<link rel="stylesheet" href="css/faculty.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-require-role="faculty">
+
+<div class="qc-bg-layer">
+  <div class="qc-bg-grid"></div>
+  <div class="qc-blur-circle qc-blur-1"></div>
+  <div class="qc-blur-circle qc-blur-2"></div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="qc-navbar" id="qcNavbar">
+  <div class="container qc-navbar-inner">
+    <a href="index.html" class="qc-logo">
+      <span class="qc-logo-mark">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#mqLogoGrad)"/>
+          <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+          <defs><linearGradient id="mqLogoGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+        </svg>
+      </span>
+      <span>Quiz<span class="qc-grad-word">Craft</span></span>
+    </a>
+
+    <button class="qc-burger d-lg-none" id="qcBurger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+
+    <div class="qc-nav-links" id="qcNavLinks">
+      <a href="faculty_dashboard.html">Dashboard</a>
+      <a href="manage_questions.html" class="active">Manage Questions</a>
+      <a href="add_question.html">Add Question</a>
+      <a href="view_results.html">Results</a>
+      <a href="profile.html">Profile</a>
+    </div>
+
+    <div class="qc-nav-actions">
+      <button class="qc-theme-toggle" id="qcThemeToggle" aria-label="Toggle dark mode"><i class="bi bi-moon-stars-fill"></i></button>
+      <a href="profile.html" class="qc-nav-avatar" title="Account">U</a>
+      <button class="qc-nav-icon-btn qc-hide-sm-down" id="qcLogoutBtn" aria-label="Logout" title="Logout"><i class="bi bi-box-arrow-right"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ PAGE HEADER ============ -->
+<section class="qp-page-header">
+  <div class="container">
+    <div class="qp-page-header-inner" data-aos="fade-up">
+      <div>
+        <h1>Manage <span class="qc-grad-word">Questions</span></h1>
+        <p>Search, filter, edit or remove questions from your question bank.</p>
+      </div>
+      <div class="qp-page-actions">
+        <a href="add_question.html" class="qc-btn qc-btn-primary qc-ripple"><i class="bi bi-plus-circle"></i> Add Question</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOLBAR ============ -->
+<section class="qc-section" style="padding-top:24px;">
+  <div class="container">
+
+    <div class="qc-card qp-toolbar" data-aos="fade-up">
+      <div class="qp-search-box">
+        <i class="bi bi-search"></i>
+        <input type="text" id="mqSearchInput" placeholder="Search questions…">
+      </div>
+      <select class="qp-filter-select" id="mqSubjectFilter">
+        <option value="all">All Subjects</option>
+        <option value="python">Python</option>
+        <option value="java">Java</option>
+        <option value="cpp">C++</option>
+        <option value="webdev">Web Development</option>
+        <option value="dbms">DBMS</option>
+        <option value="ml">Machine Learning</option>
+      </select>
+      <select class="qp-filter-select" id="mqDifficultyFilter">
+        <option value="all">All Difficulties</option>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+    </div>
+
+    <!-- Table -->
+    <div class="qc-card qp-table-card" data-aos="fade-up" data-aos-delay="80">
+      <div class="qp-table-wrap">
+        <table class="qp-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Question</th>
+              <th>Subject</th>
+              <th>Difficulty</th>
+              <th>Marks</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="mqTableBody">
+            <!-- rows injected by js/faculty.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="qp-pagination">
+        <span class="qp-pagination-info" id="mqPaginationInfo">Showing 0 of 0 questions</span>
+        <div class="qp-pagination-buttons" id="mqPaginationButtons"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DELETE CONFIRMATION MODAL ============ -->
+<div class="qp-modal-backdrop d-none" id="mqDeleteModalBackdrop">
+  <div class="qp-modal">
+    <i class="bi bi-exclamation-triangle-fill"></i>
+    <h4>Delete this question?</h4>
+    <p id="mqDeleteModalText">This action cannot be undone. The question will be permanently removed from your bank.</p>
+    <div class="qp-modal-actions">
+      <button class="qc-btn qc-btn-outline qc-ripple" id="mqDeleteCancel">Cancel</button>
+      <button class="qc-btn qc-btn-danger-outline qc-ripple" id="mqDeleteConfirm">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ VIEW QUESTION MODAL ============ -->
+<div class="qp-modal-backdrop d-none" id="mqViewModalBackdrop">
+  <div class="qp-modal" style="max-width:520px; text-align:left;">
+    <span class="qp-diff-badge qc-badge" id="mqViewDifficulty" style="margin-bottom:14px; display:inline-flex;">Medium</span>
+    <h4 id="mqViewQuestionText" style="text-align:left; margin-bottom:18px;">Question text</h4>
+    <div id="mqViewOptionsList" style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;"></div>
+    <p style="font-size:.85rem; color:var(--text-muted); margin-bottom:24px;"><strong>Explanation:</strong> <span id="mqViewExplanation"></span></p>
+    <div class="qp-modal-actions">
+      <button class="qc-btn qc-btn-outline qc-ripple" id="mqViewClose">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="qc-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <a href="index.html" class="qc-logo qc-footer-logo">
+          <span class="qc-logo-mark">
+            <svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#mqFootGrad)"/>
+              <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+              <defs><linearGradient id="mqFootGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+            </svg>
+          </span>
+          <span>Quiz<span class="qc-grad-word">Craft</span></span>
+        </a>
+        <p class="qc-footer-about">Adaptive quizzes that adjust to student level in real time.</p>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Faculty Tools</h6>
+        <ul class="qc-footer-links">
+          <li><a href="faculty_dashboard.html">Dashboard</a></li>
+          <li><a href="add_question.html">Add Question</a></li>
+          <li><a href="view_results.html">View Results</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Support</h6>
+        <ul class="qc-footer-links">
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="qc-footer-title">Contact</h6>
+        <ul class="qc-footer-links">
+          <li><i class="bi bi-envelope"></i> hello@quizcraft.app</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="qc-footer-divider">
+    <div class="qc-footer-bottom">
+      <p>© <span id="qcYear"></span> QuizCraft. All rights reserved.</p>
+      <p>Designed for smarter learning.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+<script src="js/common.js"></script>
+<script src="js/faculty.js"></script>
+</body>
+</html>

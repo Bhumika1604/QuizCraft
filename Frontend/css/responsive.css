@@ -1,0 +1,46 @@
+/* =========================================================
+   QUIZCRAFT — css/responsive.css
+   Shared responsive helpers loaded last so it can safely
+   override page-specific styles at each breakpoint.
+   Breakpoints follow Bootstrap 5: 576 / 768 / 992 / 1200.
+   ========================================================= */
+
+/* ---------- Global section spacing scale ---------- */
+.qc-section{ padding: 100px 0; }
+@media (max-width: 991.98px){ .qc-section{ padding: 80px 0; } }
+@media (max-width: 767.98px){ .qc-section{ padding: 64px 0; } }
+
+/* ---------- Container gutters on very small phones ---------- */
+@media (max-width: 400px){
+  .container{ padding-left: 16px; padding-right: 16px; }
+}
+
+/* ---------- Cards: prevent edge-to-edge cramming on mobile ---------- */
+@media (max-width: 575.98px){
+  .qc-card, .qc-glass-card{ border-radius: 16px; }
+}
+
+/* ---------- Tables: horizontal scroll instead of squeeze ---------- */
+@media (max-width: 767.98px){
+  .qc-table-responsive{ overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .qc-table-responsive table{ min-width: 640px; }
+}
+
+/* ---------- Dashboard stat grids ---------- */
+@media (max-width: 575.98px){
+  .qc-stat-grid{ grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ---------- Utility: hide/show helpers matching Bootstrap breakpoints ---------- */
+@media (max-width: 991.98px){
+  .qc-hide-lg-down{ display: none !important; }
+}
+@media (max-width: 767.98px){
+  .qc-hide-md-down{ display: none !important; }
+}
+@media (max-width: 575.98px){
+  .qc-hide-sm-down{ display: none !important; }
+}
+
+/* ---------- Prevent horizontal overflow anywhere ---------- */
+img, svg, canvas{ max-width: 100%; }

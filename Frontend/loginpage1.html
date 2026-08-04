@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Log In — QuizCraft</title>
+<meta name="description" content="Log in to your QuizCraft account to continue your adaptive quiz practice." />
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
+<!-- This page is fully self-contained: loginpage1.css only -->
+<link rel="stylesheet" href="css/loginpage1.css">
+</head>
+<body>
+
+<!-- ============ NAVBAR (same visual design as homepage) ============ -->
+<nav class="lp1-navbar" id="lp1Navbar">
+  <div class="container lp1-navbar-inner">
+    <a href="index.html" class="lp1-logo">
+      <span class="lp1-logo-mark">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#lp1LogoGrad)"/>
+          <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+          <defs>
+            <linearGradient id="lp1LogoGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#2563EB"/>
+              <stop offset="1" stop-color="#7C3AED"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      <span class="lp1-logo-text">Quiz<span class="lp1-grad-word">Craft</span></span>
+    </a>
+
+    <button class="lp1-burger d-lg-none" id="lp1Burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="lp1-nav-links" id="lp1NavLinks">
+      <a href="index.html">Home</a>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#subjects">Subjects</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+
+    <div class="lp1-nav-actions">
+      <button class="lp1-theme-toggle" id="lp1ThemeToggle" aria-label="Toggle dark mode">
+        <i class="bi bi-moon-stars-fill"></i>
+      </button>
+      <a href="index.html" class="lp1-btn-login"><i class="bi bi-arrow-left"></i> Back to Home</a>
+      <!-- BUG FIX: this used to link to "register.html", a file that
+           does not exist in this project (the real file is
+           registerpage1.html) — clicking "Create Account" produced a
+           404. Pointed at the correct filename. -->
+      <a href="registerpage1.html" class="lp1-btn-register">Create Account</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ LOGIN SECTION (Bootstrap grid, normal document flow) ============ -->
+<section class="login-section">
+  <div class="lp1-bg-blur blur-a"></div>
+  <div class="lp1-bg-blur blur-b"></div>
+  <div class="lp1-bg-grid"></div>
+
+  <div class="container">
+    <div class="row align-items-center gy-5">
+
+      <!-- LEFT COLUMN: illustration -->
+      <div class="col-lg-6">
+        <div class="illustration-copy">
+          <div class="lp1-badge">
+            <span class="lp1-badge-dot"></span>
+            Welcome Back
+          </div>
+          <h1>Pick up right where <span class="lp1-gradient-text">you left off</span></h1>
+          <p>Your streak, your stats and every adaptive quiz you've started are waiting. Log in to keep the momentum going.</p>
+
+          <div class="illustration-stats">
+            <div class="stat-box">
+              <h3>5000+</h3>
+              <p>Students</p>
+            </div>
+            <div class="stat-box">
+              <h3>1000+</h3>
+              <p>Questions</p>
+            </div>
+            <div class="stat-box">
+              <h3>82%</h3>
+              <p>Avg Accuracy</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard mockup: pure HTML/CSS, no images -->
+        <div class="dash-stage">
+
+          <div class="dash-card main-card float-slow">
+            <div class="dash-head">
+              <div class="dash-avatar"><i class="bi bi-person-check-fill"></i></div>
+              <div>
+                <p class="dash-title">Welcome back, Learner</p>
+                <p class="dash-sub">7 day streak · Keep it going</p>
+              </div>
+              <span class="dash-pill">Active</span>
+            </div>
+
+            <div class="dash-question">Continue: Python · Loops &amp; Iteration</div>
+
+            <div class="dash-option correct">
+              <span>A</span> range(2, 10, 2)
+              <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <div class="dash-option">
+              <span>B</span> range(2, 10)
+            </div>
+
+            <div class="dash-footer-row">
+              <div class="timer-ring">
+                <svg viewBox="0 0 40 40">
+                  <circle cx="20" cy="20" r="16" class="ring-bg"/>
+                  <circle cx="20" cy="20" r="16" class="ring-fg"/>
+                </svg>
+                <span>14s</span>
+              </div>
+              <div class="score-chip"><i class="bi bi-star-fill"></i> Score 860</div>
+            </div>
+          </div>
+
+          <div class="dash-card float-chip progress-chip float-med">
+            <p class="chip-label">Overall Progress</p>
+            <div class="chip-track"><div class="chip-fill"></div></div>
+            <p class="chip-value">78% mastered</p>
+          </div>
+
+          <div class="dash-card float-chip pie-chip float-fast">
+            <p class="chip-label">Accuracy</p>
+            <div class="pie-wrap">
+              <svg viewBox="0 0 36 36" class="pie-svg">
+                <path class="pie-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                <path class="pie-fg" stroke-dasharray="82, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+              </svg>
+              <span class="pie-value">82%</span>
+            </div>
+          </div>
+
+          <div class="dash-card float-chip streak-chip float-med">
+            <i class="bi bi-lightning-charge-fill"></i>
+            <div>
+              <p class="chip-label m-0">Daily streak</p>
+              <p class="chip-value m-0">7 days running</p>
+            </div>
+          </div>
+
+          <div class="dash-card float-chip bars-chip float-slow">
+            <p class="chip-label">Weekly Activity</p>
+            <div class="mini-bars">
+              <span style="--h:40%"></span>
+              <span style="--h:65%"></span>
+              <span style="--h:50%"></span>
+              <span style="--h:90%"></span>
+              <span style="--h:70%"></span>
+              <span style="--h:100%"></span>
+              <span style="--h:60%"></span>
+            </div>
+          </div>
+
+          <div class="dash-glow"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: centered glass login card -->
+      <div class="col-lg-6">
+        <div class="login-card-wrap">
+          <div class="login-card">
+
+            <div class="login-card-head">
+              <span class="lp1-logo-mark login-mark">
+                <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#lp1LogoGrad2)"/>
+                  <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+                  <defs>
+                    <linearGradient id="lp1LogoGrad2" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#2563EB"/>
+                      <stop offset="1" stop-color="#7C3AED"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+              <h2>Log in to your account</h2>
+              <p>Enter your details to continue learning.</p>
+            </div>
+
+            <!--
+              DJANGO INTEGRATION NOTES:
+              1. Set form action="{% url 'login' %}" method="post"
+              2. Add {% csrf_token %} as the first element inside <form>,
+                 replacing the hidden csrfmiddlewaretoken input below.
+              3. Server-side field errors can render into #lp1EmailError / #lp1PasswordError.
+              4. Framework messages (django.contrib.messages) can populate #lp1Alert.
+            -->
+            <div class="lp1-alert d-none" id="lp1Alert" role="alert"></div>
+
+            <form id="lp1LoginForm" name="loginForm" action="#" method="POST" novalidate>
+              <input type="hidden" name="csrfmiddlewaretoken" id="csrfmiddlewaretoken" value="">
+
+              <div class="lp1-field">
+                <label for="lp1Email" class="lp1-label">Email address</label>
+                <div class="lp1-input-icon">
+                  <i class="bi bi-envelope"></i>
+                  <input
+                    type="email"
+                    class="lp1-input"
+                    id="lp1Email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                  >
+                </div>
+                <div class="lp1-error" id="lp1EmailError"></div>
+              </div>
+
+              <div class="lp1-field">
+                <div class="lp1-label-row">
+                  <label for="lp1Password" class="lp1-label">Password</label>
+                  <!-- BUG FIX: used to link to forgot-password.html, a
+                       page that doesn't exist in this project (404).
+                       Self-service password reset (emailing a reset
+                       link) is a separate feature of its own scope, so
+                       for now this shows a clear in-page notice instead
+                       of a broken link — see initForgotPasswordLink()
+                       in js/loginpage1.js. -->
+                  <a href="#" class="lp1-forgot-link" id="lp1ForgotPassword">Forgot password?</a>
+                </div>
+                <div class="lp1-input-icon">
+                  <i class="bi bi-lock"></i>
+                  <input
+                    type="password"
+                    class="lp1-input"
+                    id="lp1Password"
+                    name="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                  >
+                  <button type="button" class="lp1-password-toggle" id="lp1PasswordToggle" aria-label="Show password">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
+                <div class="lp1-error" id="lp1PasswordError"></div>
+              </div>
+
+              <div class="lp1-remember-row">
+                <div class="lp1-checkbox">
+                  <input type="checkbox" id="lp1Remember" name="remember">
+                  <label for="lp1Remember">Remember me</label>
+                </div>
+              </div>
+
+              <button type="submit" class="lp1-submit-btn" id="lp1LoginSubmit">
+                Log In <i class="bi bi-arrow-right"></i>
+              </button>
+
+              <div class="lp1-divider"><span>or continue with</span></div>
+
+              <button type="button" class="lp1-google-btn" id="lp1GoogleLogin">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.91c1.7-1.57 2.69-3.88 2.69-6.62z"/>
+                  <path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.91-2.26c-.81.54-1.84.86-3.05.86-2.34 0-4.33-1.58-5.04-3.7H.94v2.33A9 9 0 0 0 9 18z"/>
+                  <path fill="#FBBC05" d="M3.96 10.72A5.4 5.4 0 0 1 3.68 9c0-.6.1-1.18.28-1.72V4.95H.94A9 9 0 0 0 0 9c0 1.45.35 2.83.94 4.05l3.02-2.33z"/>
+                  <path fill="#EA4335" d="M9 3.58c1.32 0 2.51.45 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0A9 9 0 0 0 .94 4.95l3.02 2.33C4.67 5.16 6.66 3.58 9 3.58z"/>
+                </svg>
+                Continue with Google
+              </button>
+
+              <p class="lp1-switch-text">
+                Don't have an account? <a href="registerpage1.html">Create one</a>
+              </p>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER — sibling of the section, never inside the row ============ -->
+<footer class="lp1-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <a href="index.html" class="lp1-logo lp1-footer-logo">
+          <span class="lp1-logo-mark">
+            <svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="32" rx="9" fill="url(#lp1LogoGrad3)"/>
+              <path d="M11 21.5L15 13.5L19 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12.3 18.7H17.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="23.5" cy="17" r="1.8" fill="white"/>
+              <defs>
+                <linearGradient id="lp1LogoGrad3" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#2563EB"/>
+                  <stop offset="1" stop-color="#7C3AED"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+          <span class="lp1-logo-text">Quiz<span class="lp1-grad-word">Craft</span></span>
+        </a>
+        <p class="lp1-footer-about">Adaptive quizzes that adjust to your level in real time — built to make focused practice a daily habit.</p>
+        <div class="lp1-footer-socials">
+          <a href="#"><i class="bi bi-twitter-x"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-github"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <h6 class="lp1-footer-title">Quick Links</h6>
+        <ul class="lp1-footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#subjects">Subjects</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <h6 class="lp1-footer-title">Subjects</h6>
+        <ul class="lp1-footer-links">
+          <li><a href="index.html#subjects">Python</a></li>
+          <li><a href="index.html#subjects">Java</a></li>
+          <li><a href="index.html#subjects">Web Development</a></li>
+          <li><a href="index.html#subjects">DBMS</a></li>
+          <li><a href="index.html#subjects">Machine Learning</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <h6 class="lp1-footer-title">Contact</h6>
+        <ul class="lp1-footer-links">
+          <li><i class="bi bi-envelope"></i> hello@quizcraft.app</li>
+          <li><i class="bi bi-telephone"></i> +91 98765 43210</li>
+          <li><i class="bi bi-geo-alt"></i> Mumbai, Maharashtra, India</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="lp1-footer-divider">
+
+    <div class="lp1-footer-bottom">
+      <p>© <span id="lp1Year"></span> QuizCraft. All rights reserved.</p>
+      <p>Designed for smarter learning.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<!-- Google Identity Services: real "Continue with Google" sign-in.
+     See the GOOGLE_CLIENT_ID note at the top of js/loginpage1.js. -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="js/loginpage1.js"></script>
+</body>
+</html>

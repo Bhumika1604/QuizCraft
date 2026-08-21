@@ -1,0 +1,16 @@
+{% extends "frontend/base.html" %}
+{% block title %}Contact — QuizCraft{% endblock %}
+{% block content %}
+<section class="container py-5">
+  <div class="auth-card mx-auto">
+    <h3 class="fw-bold mb-3">Get in touch</h3>
+    <p class="text-muted">This is a demo academic project — form submissions aren't wired to a live inbox.</p>
+    <form onsubmit="event.preventDefault(); qcToast('Thanks! This is a demo form.', 'info');">
+      <div class="mb-3"><label class="qc-label">Name</label><input class="qc-input" required></div>
+      <div class="mb-3"><label class="qc-label">Email</label><input type="email" class="qc-input" required></div>
+      <div class="mb-3"><label class="qc-label">Message</label><textarea class="qc-input" rows="4" required></textarea></div>
+      <button class="btn-gradient w-100">Send Message</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

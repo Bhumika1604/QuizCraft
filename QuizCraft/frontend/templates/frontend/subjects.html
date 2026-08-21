@@ -1,0 +1,27 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Take a Quiz — QuizCraft{% endblock %}
+{% block content %}
+<section class="container py-5">
+  <h2 class="section-title">Choose a Subject</h2>
+  <p class="section-sub">Pick a subject to start an adaptive quiz. Difficulty adjusts as you answer.</p>
+  <div id="loading-state"><div class="qc-spinner"></div><p class="qc-loading-text">Loading subjects...</p></div>
+  <div class="row g-4" id="subject-grid" style="display:none;"></div>
+</section>
+
+<div class="modal fade" id="confirmModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:16px; border:none;">
+      <div class="modal-body p-4">
+        <h5 class="fw-bold" id="confirmSubjectName">Start quiz?</h5>
+        <p class="text-muted">10 adaptive questions. Timer starts as soon as you begin — there's no pausing.</p>
+        <div class="d-flex gap-2 justify-content-end">
+          <button class="btn-outline-gradient" data-bs-dismiss="modal">Cancel</button>
+          <button class="btn-gradient" id="confirmStartBtn">Start Quiz</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'js/subjects.js' %}"></script>{% endblock %}

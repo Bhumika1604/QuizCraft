@@ -1,0 +1,62 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Analytics — QuizCraft{% endblock %}
+{% block content %}
+<section class="container py-5">
+  <h2 class="section-title">Performance Analytics</h2>
+  <p class="section-sub">Insights generated from your real quiz attempts.</p>
+
+  <div id="loading-state"><div class="qc-spinner"></div><p class="qc-loading-text">Loading analytics...</p></div>
+  <div id="empty-state" style="display:none;"></div>
+
+  <div id="analytics-content" style="display:none;">
+    <div class="row g-3 mb-4" id="stat-cards"></div>
+
+    <div class="row g-4 mb-4">
+      <div class="col-lg-8">
+        <div class="qc-card h-100">
+          <h6 class="fw-bold mb-3">Performance Trend</h6>
+          <canvas id="trendChart" height="180"></canvas>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="qc-card h-100">
+          <h6 class="fw-bold mb-3">Correct vs Incorrect</h6>
+          <canvas id="correctChart" height="180"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4 mb-4">
+      <div class="col-lg-6">
+        <div class="qc-card h-100">
+          <h6 class="fw-bold mb-3">Subject Performance</h6>
+          <canvas id="subjectChart" height="200"></canvas>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="qc-card h-100">
+          <h6 class="fw-bold mb-3">Difficulty Distribution</h6>
+          <canvas id="difficultyChart" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="qc-card h-100">
+          <h6 class="fw-bold mb-3"><i class="fa-solid fa-brain gradient-text"></i> Adaptive Learning Summary</h6>
+          <div id="adaptive-summary"></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="qc-card h-100">
+          <h6 class="fw-bold mb-2"><i class="fa-solid fa-arrow-trend-up gradient-text"></i> Strong &amp; Weak Subjects</h6>
+          <div id="strong-weak"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'js/analytics.js' %}"></script>{% endblock %}

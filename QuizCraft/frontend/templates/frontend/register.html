@@ -1,0 +1,49 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Register — QuizCraft{% endblock %}
+{% block content %}
+<section class="auth-wrap">
+  <div class="auth-card">
+    <h3 class="fw-bold mb-1">Create your account</h3>
+    <p class="text-muted mb-4">Join QuizCraft as a student or faculty member.</p>
+
+    <form id="register-form" novalidate>
+      <div class="mb-3">
+        <label class="qc-label">Full Name</label>
+        <input class="qc-input" id="full_name" placeholder="Jordan Smith">
+        <div class="field-error" id="err-full_name"></div>
+      </div>
+      <div class="mb-3">
+        <label class="qc-label">Email</label>
+        <input class="qc-input" id="email" type="email" placeholder="you@example.com">
+        <div class="field-error" id="err-email"></div>
+      </div>
+      <div class="mb-3">
+        <label class="qc-label">Phone <span class="text-muted fw-normal">(optional)</span></label>
+        <input class="qc-input" id="phone" placeholder="+1 555 000 1111">
+        <div class="field-error" id="err-phone"></div>
+      </div>
+      <div class="mb-3">
+        <label class="qc-label">I am a</label>
+        <select class="qc-input" id="role">
+          <option value="student">Student</option>
+          <option value="faculty">Faculty</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="qc-label">Password</label>
+        <input class="qc-input" id="password" type="password" placeholder="At least 8 characters">
+        <div class="field-error" id="err-password"></div>
+      </div>
+      <div class="mb-4">
+        <label class="qc-label">Confirm Password</label>
+        <input class="qc-input" id="confirm_password" type="password">
+        <div class="field-error" id="err-confirm_password"></div>
+      </div>
+      <button class="btn-gradient w-100" id="submit-btn" type="submit">Create Account</button>
+    </form>
+    <p class="text-center text-muted mt-3 mb-0">Already have an account? <a href="/login/" class="fw-bold" style="color:var(--primary)">Log in</a></p>
+  </div>
+</section>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'js/register.js' %}"></script>{% endblock %}

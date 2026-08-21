@@ -1,0 +1,48 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Faculty Analytics — QuizCraft{% endblock %}
+{% block content %}
+<section class="container py-5">
+  <h2 class="section-title mb-1">Analytics</h2>
+  <p class="section-sub">Class-wide performance, computed live from every completed attempt in MongoDB.</p>
+
+  <div id="loading-state"><div class="qc-spinner"></div><p class="qc-loading-text">Loading analytics...</p></div>
+  <div id="empty-state" style="display:none;"></div>
+
+  <div id="analytics-content" style="display:none;">
+    <div class="row g-4 mb-2">
+      <div class="col-lg-6">
+        <div class="qc-card">
+          <h5 class="fw-bold mb-3">Average Score by Subject</h5>
+          <canvas id="subjectChart" height="220"></canvas>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="qc-card">
+          <h5 class="fw-bold mb-3">Pass / Fail Distribution</h5>
+          <canvas id="passFailChart" height="220"></canvas>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="qc-card">
+          <h5 class="fw-bold mb-3">Attempts Over Time</h5>
+          <canvas id="timeChart" height="220"></canvas>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="qc-card">
+          <h5 class="fw-bold mb-3">Difficulty Distribution</h5>
+          <canvas id="difficultyChart" height="220"></canvas>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="qc-card">
+          <h5 class="fw-bold mb-3">Top Student Performance</h5>
+          <div id="student-performance"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'js/faculty_analytics.js' %}"></script>{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Profile — QuizCraft{% endblock %}
+{% block content %}
+<section class="container py-5" style="max-width:820px;">
+  <div id="loading-state"><div class="qc-spinner"></div><p class="qc-loading-text">Loading profile...</p></div>
+
+  <div id="profile-content" style="display:none;">
+    <div class="qc-card mb-4 d-flex align-items-center gap-3 flex-wrap">
+      <div style="width:64px;height:64px;border-radius:50%;background:var(--grad-primary);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1.5rem;" id="avatar-initial"></div>
+      <div>
+        <h4 class="fw-bold mb-0" id="profile-name"></h4>
+        <span class="chip" id="profile-role"></span>
+        <span class="text-muted small ms-2" id="profile-since"></span>
+      </div>
+    </div>
+
+    <div class="row g-3 mb-4" id="profile-stats"></div>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="qc-card">
+          <h6 class="fw-bold mb-3">Edit Profile</h6>
+          <form id="profile-form">
+            <div class="mb-3"><label class="qc-label">Full Name</label><input class="qc-input" id="edit-full_name"></div>
+            <div class="mb-3"><label class="qc-label">Email</label><input class="qc-input" id="edit-email" disabled></div>
+            <div class="mb-3"><label class="qc-label">Phone</label><input class="qc-input" id="edit-phone" placeholder="+1 555 000 1111"></div>
+            <div class="field-error mb-2" id="profile-error"></div>
+            <button class="btn-gradient w-100" type="submit">Save Changes</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="qc-card">
+          <h6 class="fw-bold mb-3">Change Password</h6>
+          <form id="password-form">
+            <div class="mb-3"><label class="qc-label">Current Password</label><input type="password" class="qc-input" id="old_password"></div>
+            <div class="mb-3"><label class="qc-label">New Password</label><input type="password" class="qc-input" id="new_password"></div>
+            <div class="field-error mb-2" id="password-error"></div>
+            <button class="btn-outline-gradient w-100" type="submit">Update Password</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'js/profile.js' %}"></script>{% endblock %}

@@ -1,0 +1,12 @@
+Django==5.1.5
+djangorestframework==3.15.2
+pymongo==4.10.1
+dnspython==2.7.0
+django-cors-headers==4.4.0
+python-dotenv==1.0.1
+gunicorn==23.0.0
+
+# Used only by the automated logic test-suite (core/tests_logic.py) to
+# exercise real MongoDB CRUD / adaptive-engine / analytics code paths
+# without requiring a live MongoDB server to be installed.
+mongomock==4.3.0

@@ -1,0 +1,55 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Quiz — QuizCraft{% endblock %}
+{% block content %}
+<section class="container py-4" style="max-width:820px;">
+  <div id="loading-state"><div class="qc-spinner"></div><p class="qc-loading-text">Loading your quiz...</p></div>
+
+  <div id="quiz-content" style="display:none;">
+    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+      <div>
+        <span class="chip" id="subject-chip"></span>
+        <span class="badge-diff ms-2" id="difficulty-badge"></span>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <div class="timer-pill" id="timer-pill"><i class="fa-regular fa-clock"></i> <span id="timer-text">--:--</span></div>
+        <button class="btn-danger-soft px-3 py-2" id="submit-early-btn" type="button" title="Submit now">
+          <i class="fa-solid fa-flag-checkered"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between mb-1">
+      <span class="text-muted small fw-semibold">Question <span id="q-number">1</span> of <span id="q-total">10</span></span>
+      <span class="text-muted small fw-semibold" id="q-progress-pct">0%</span>
+    </div>
+    <div class="qc-progress mb-4"><div id="progress-bar" style="width:0%"></div></div>
+
+    <div class="qc-card mb-4">
+      <h4 class="fw-bold mb-4" id="question-text"></h4>
+      <div id="options-list"></div>
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn-gradient" id="next-btn" disabled>Next <i class="fa-solid fa-arrow-right ms-1"></i></button>
+    </div>
+  </div>
+</section>
+
+<div class="modal fade" id="submitModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:16px; border:none;">
+      <div class="modal-body p-4 text-center">
+        <i class="fa-solid fa-paper-plane fs-1 gradient-text mb-3 d-block"></i>
+        <h5 class="fw-bold">Submit your quiz?</h5>
+        <p class="text-muted">You won't be able to change your answers after this.</p>
+        <div class="d-flex gap-2 justify-content-center">
+          <button class="btn-outline-gradient" data-bs-dismiss="modal">Keep Going</button>
+          <button class="btn-gradient" id="confirmSubmitBtn">Submit Quiz</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'js/quiz.js' %}"></script>{% endblock %}

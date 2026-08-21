@@ -1,0 +1,43 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Faculty Dashboard — QuizCraft{% endblock %}
+{% block content %}
+<section class="container py-5">
+  <h2 class="section-title" id="welcome-heading">Faculty Dashboard</h2>
+  <p class="section-sub">Live snapshot of your question bank and student performance.</p>
+
+  <div id="loading-state"><div class="qc-spinner"></div><p class="qc-loading-text">Loading dashboard...</p></div>
+
+  <div id="dashboard-content" style="display:none;">
+    <div class="row g-3 mb-4" id="metric-cards"></div>
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <div class="qc-card h-100">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold mb-0">Recent Attempts</h5>
+            <a href="/faculty/results/" style="color:var(--primary); font-weight:600;">View all <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div id="recent-attempts"></div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="qc-card h-100">
+          <h5 class="fw-bold mb-3">Quick Actions</h5>
+          <div class="d-grid gap-2">
+            <a href="/faculty/questions/add/" class="btn-gradient"><i class="fa-solid fa-plus me-1"></i> Add Question</a>
+            <a href="/faculty/questions/" class="btn-outline-gradient"><i class="fa-solid fa-list me-1"></i> Manage Questions</a>
+            <a href="/faculty/subjects/" class="btn-outline-gradient"><i class="fa-solid fa-book me-1"></i> Manage Subjects</a>
+            <a href="/faculty/analytics/" class="btn-outline-gradient"><i class="fa-solid fa-chart-pie me-1"></i> View Analytics</a>
+          </div>
+          <hr>
+          <p class="mb-1 text-muted small">Pass Rate</p>
+          <div class="qc-progress mb-1"><div id="pass-rate-bar" style="width:0%"></div></div>
+          <p class="text-end small fw-semibold" id="pass-rate-text">0%</p>
+          <p class="mb-0 text-muted small">Most attempted subject: <strong id="most-attempted">-</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'js/faculty_dashboard.js' %}"></script>{% endblock %}

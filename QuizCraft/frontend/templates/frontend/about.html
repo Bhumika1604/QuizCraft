@@ -1,0 +1,27 @@
+{% extends "frontend/base.html" %}
+{% block title %}About — QuizCraft{% endblock %}
+{% block content %}
+<section class="container py-5">
+  <h1 class="fw-bold mb-3">About <span class="gradient-text">QuizCraft</span></h1>
+  <p class="text-muted fs-5" style="max-width:760px;">
+    QuizCraft is an adaptive online quiz platform built as an academic Python/Django project. It selects
+    question difficulty in real time based on student performance, tracks every attempt in MongoDB, and
+    provides both students and faculty with meaningful, data-driven analytics — no hardcoded numbers, no
+    fake charts.
+  </p>
+  <div class="row g-4 mt-3">
+    <div class="col-md-6">
+      <div class="qc-card h-100">
+        <h5 class="fw-bold"><i class="fa-solid fa-bullseye gradient-text"></i> Our Goal</h5>
+        <p class="text-muted mb-0">Give every student a quiz that matches their current skill level instead of a one-size-fits-all test.</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="qc-card h-100">
+        <h5 class="fw-bold"><i class="fa-solid fa-layer-group gradient-text"></i> Tech Stack</h5>
+        <p class="text-muted mb-0">Python, Django, Django REST Framework, MongoDB (PyMongo), HTML5/CSS3, JavaScript, Chart.js.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

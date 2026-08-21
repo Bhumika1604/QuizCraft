@@ -1,0 +1,44 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Student Results — QuizCraft{% endblock %}
+{% block content %}
+<section class="container py-5">
+  <h2 class="section-title mb-1">Student Results</h2>
+  <p class="section-sub">Every quiz attempt submitted by your students, pulled live from MongoDB.</p>
+
+  <div class="qc-card mb-4">
+    <div class="row g-2">
+      <div class="col-md-5">
+        <input type="text" class="form-control" id="search-student" placeholder="Search by student name...">
+      </div>
+      <div class="col-md-4">
+        <select class="form-select" id="filter-subject"><option value="">All Subjects</option></select>
+      </div>
+      <div class="col-md-3">
+        <button class="btn-gradient w-100" id="apply-filters">Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="loading-state"><div class="qc-spinner"></div><p class="qc-loading-text">Loading results...</p></div>
+
+  <div id="results-empty" class="qc-empty py-5" style="display:none;">
+    <i class="fa-solid fa-inbox"></i>
+    <h5>No results found.</h5>
+    <p>No students have completed a quiz matching this filter yet.</p>
+  </div>
+
+  <div class="table-responsive qc-card" id="results-table-wrap" style="display:none;">
+    <table class="table qc-table align-middle mb-0">
+      <thead>
+        <tr>
+          <th>Student</th><th>Subject</th><th>Score</th><th>Percentage</th>
+          <th>Difficulty</th><th>Time Taken</th><th>Date</th><th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="results-body"></tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'js/view_results.js' %}"></script>{% endblock %}

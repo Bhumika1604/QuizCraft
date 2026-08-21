@@ -1,0 +1,41 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Dashboard — QuizCraft{% endblock %}
+{% block content %}
+<section class="container py-5">
+  <div id="loading-state">
+    <div class="qc-spinner"></div>
+    <p class="qc-loading-text">Loading your dashboard...</p>
+  </div>
+
+  <div id="dashboard-content" style="display:none;">
+    <h2 class="section-title" id="welcome-heading">Welcome back!</h2>
+    <p class="section-sub">Here's how your learning is going.</p>
+
+    <div class="row g-3 mb-4" id="metric-cards"></div>
+
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <div class="qc-card h-100">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold mb-0">Recent Quizzes</h5>
+            <a href="/history/" style="color:var(--primary); font-weight:600;">View all <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div id="recent-quizzes"></div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="qc-card h-100">
+          <h5 class="fw-bold mb-3">Subject Performance</h5>
+          <div id="subject-performance"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="/subjects/" class="btn-gradient"><i class="fa-solid fa-play me-1"></i> Take a New Quiz</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'js/dashboard.js' %}"></script>{% endblock %}

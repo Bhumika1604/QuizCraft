@@ -1,0 +1,52 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Manage Subjects — QuizCraft{% endblock %}
+{% block content %}
+<section class="container py-5">
+  <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+    <div>
+      <h2 class="section-title mb-1">Manage Subjects</h2>
+      <p class="section-sub mb-0">Create and organize the subjects students can take quizzes in.</p>
+    </div>
+    <button class="btn-gradient" data-bs-toggle="modal" data-bs-target="#subjectModal" onclick="qcOpenSubjectModal()">
+      <i class="fa-solid fa-plus me-1"></i> Add Subject
+    </button>
+  </div>
+
+  <div id="loading-state"><div class="qc-spinner"></div><p class="qc-loading-text">Loading subjects...</p></div>
+
+  <div id="subjects-empty" class="qc-empty py-5" style="display:none;">
+    <i class="fa-solid fa-book"></i>
+    <h5>No subjects yet.</h5>
+    <p>Add your first subject to start building the question bank.</p>
+  </div>
+
+  <div class="row g-3" id="subjects-grid" style="display:none;"></div>
+</section>
+
+<div class="modal fade" id="subjectModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content qc-card border-0">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold" id="subjectModalTitle">Add Subject</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="subject-form">
+          <input type="hidden" id="subject-id">
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Subject Name</label>
+            <input type="text" class="form-control" id="subject-name" required maxlength="60">
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Description</label>
+            <textarea class="form-control" id="subject-description" rows="3" maxlength="300"></textarea>
+          </div>
+          <button type="submit" class="btn-gradient w-100">Save Subject</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'js/faculty_subjects.js' %}"></script>{% endblock %}

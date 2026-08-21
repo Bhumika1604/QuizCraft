@@ -1,0 +1,52 @@
+{% extends "frontend/base.html" %}
+{% block title %}QuizCraft — Adaptive Quiz Generator{% endblock %}
+{% block content %}
+<section class="container py-5">
+  <div class="row align-items-center g-5 py-5">
+    <div class="col-lg-6">
+      <span class="chip mb-3"><i class="fa-solid fa-bolt"></i> Adaptive Learning Engine</span>
+      <h1 class="fw-bold display-5 mb-3">Quizzes that <span class="gradient-text">adapt to you</span></h1>
+      <p class="text-muted fs-5 mb-4">QuizCraft adjusts question difficulty in real time based on how you answer,
+        then gives you meaningful analytics on where you're strong and where you need practice.</p>
+      <div class="d-flex gap-3">
+        <a href="/register/" class="btn-gradient">Get Started <i class="fa-solid fa-arrow-right ms-1"></i></a>
+        <a href="/features/" class="btn-outline-gradient">See Features</a>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="qc-card hoverlift">
+        <div class="row g-3">
+          <div class="col-6"><div class="metric-card"><i class="fa-solid fa-brain"></i><div class="metric-label">Adaptive Engine</div><div class="metric-value">3 Levels</div></div></div>
+          <div class="col-6"><div class="metric-card alt"><i class="fa-solid fa-chart-line"></i><div class="metric-label">Live Analytics</div><div class="metric-value">Real-time</div></div></div>
+          <div class="col-6"><div class="metric-card green"><i class="fa-solid fa-stopwatch"></i><div class="metric-label">Timed Quizzes</div><div class="metric-value">Auto-submit</div></div></div>
+          <div class="col-6"><div class="metric-card warm"><i class="fa-solid fa-trophy"></i><div class="metric-label">Leaderboard</div><div class="metric-value">Live Rank</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4 py-5">
+    <div class="col-md-4">
+      <div class="qc-card hoverlift h-100">
+        <i class="fa-solid fa-shuffle fs-2 mb-3 gradient-text"></i>
+        <h5 class="fw-bold">Adaptive Difficulty</h5>
+        <p class="text-muted mb-0">Every correct or wrong answer moves you between Easy, Medium and Hard in real time.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="qc-card hoverlift h-100">
+        <i class="fa-solid fa-chart-pie fs-2 mb-3 gradient-text"></i>
+        <h5 class="fw-bold">Deep Analytics</h5>
+        <p class="text-muted mb-0">Performance trends, subject strengths/weaknesses, and difficulty-wise accuracy.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="qc-card hoverlift h-100">
+        <i class="fa-solid fa-chalkboard-user fs-2 mb-3 gradient-text"></i>
+        <h5 class="fw-bold">Faculty Tools</h5>
+        <p class="text-muted mb-0">Faculty manage the question bank and see class-wide performance analytics.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

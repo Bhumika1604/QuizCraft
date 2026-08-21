@@ -1,0 +1,42 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Result — QuizCraft{% endblock %}
+{% block content %}
+<section class="container py-5" style="max-width:760px;">
+  <div id="loading-state"><div class="qc-spinner"></div><p class="qc-loading-text">Loading your result...</p></div>
+
+  <div id="result-content" style="display:none;">
+    <div class="qc-card text-center mb-4">
+      <span class="badge-diff mb-2" id="subject-chip" style="background:#EEF0FF;color:var(--primary);"></span>
+      <div class="score-ring mx-auto my-3">
+        <svg viewBox="0 0 120 120" width="180" height="180">
+          <circle cx="60" cy="60" r="52" fill="none" stroke="#E7E5F5" stroke-width="12"/>
+          <circle id="score-circle" cx="60" cy="60" r="52" fill="none" stroke="url(#grad)" stroke-width="12" stroke-linecap="round" stroke-dasharray="327" stroke-dashoffset="327" transform="rotate(-90 60 60)"/>
+          <defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#7C3AED"/></linearGradient></defs>
+          <text x="60" y="66" text-anchor="middle" font-size="26" fill="#1E1B2E" id="score-pct-text">0%</text>
+        </svg>
+      </div>
+      <div id="pass-fail-badge" class="mb-2"></div>
+      <p class="text-muted mb-0" id="performance-message"></p>
+    </div>
+
+    <div class="row g-3 mb-4">
+      <div class="col-4"><div class="metric-card green"><i class="fa-solid fa-check"></i><div class="metric-label">Correct</div><div class="metric-value" id="correct-count">0</div></div></div>
+      <div class="col-4"><div class="metric-card warm"><i class="fa-solid fa-xmark"></i><div class="metric-label">Wrong</div><div class="metric-value" id="wrong-count">0</div></div></div>
+      <div class="col-4"><div class="metric-card alt"><i class="fa-solid fa-clock"></i><div class="metric-label">Time Taken</div><div class="metric-value" id="time-taken" style="font-size:1.2rem;">0:00</div></div></div>
+    </div>
+
+    <div class="qc-card mb-4">
+      <h6 class="fw-bold mb-3">Difficulty Progression</h6>
+      <div id="difficulty-progression" class="d-flex flex-wrap gap-2"></div>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2 justify-content-center">
+      <a href="/subjects/" class="btn-gradient"><i class="fa-solid fa-rotate-right me-1"></i> Retry / New Quiz</a>
+      <a href="/dashboard/" class="btn-outline-gradient"><i class="fa-solid fa-gauge me-1"></i> Dashboard</a>
+      <a href="/history/" class="btn-outline-gradient"><i class="fa-solid fa-clock-rotate-left me-1"></i> View History</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'js/result.js' %}"></script>{% endblock %}

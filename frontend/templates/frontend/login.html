@@ -1,0 +1,25 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Login — QuizCraft{% endblock %}
+{% block content %}
+<section class="auth-wrap">
+  <div class="auth-card">
+    <h3 class="fw-bold mb-1">Welcome back</h3>
+    <p class="text-muted mb-4">Log in to continue your adaptive learning journey.</p>
+    <form id="login-form" novalidate>
+      <div class="mb-3">
+        <label class="qc-label">Email</label>
+        <input class="qc-input" id="email" type="email" placeholder="you@example.com">
+      </div>
+      <div class="mb-3">
+        <label class="qc-label">Password</label>
+        <input class="qc-input" id="password" type="password" placeholder="Your password">
+      </div>
+      <div class="field-error mb-2" id="login-error"></div>
+      <button class="btn-gradient w-100" id="submit-btn" type="submit">Log In</button>
+    </form>
+    <p class="text-center text-muted mt-3 mb-0">New to QuizCraft? <a href="/register/" class="fw-bold" style="color:var(--primary)">Create an account</a></p>
+  </div>
+</section>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'js/login.js' %}"></script>{% endblock %}

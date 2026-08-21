@@ -1,0 +1,53 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Add Question — QuizCraft{% endblock %}
+{% block content %}
+<section class="container py-5" style="max-width:720px;">
+  <h2 class="section-title">Add Question</h2>
+  <p class="section-sub">New questions are saved straight to MongoDB and become available immediately.</p>
+
+  <div class="qc-card">
+    <form id="question-form" novalidate>
+      <div class="mb-3">
+        <label class="qc-label">Subject</label>
+        <select class="qc-input" id="subject" required></select>
+        <div class="field-error" id="err-subject"></div>
+      </div>
+      <div class="mb-3">
+        <label class="qc-label">Question Text</label>
+        <textarea class="qc-input" id="question_text" rows="3" placeholder="Enter the question..."></textarea>
+        <div class="field-error" id="err-question_text"></div>
+      </div>
+      <div class="row g-3 mb-1">
+        <div class="col-md-6"><label class="qc-label">Option 1 (Correct)</label><input class="qc-input" id="opt0"></div>
+        <div class="col-md-6"><label class="qc-label">Option 2</label><input class="qc-input" id="opt1"></div>
+        <div class="col-md-6"><label class="qc-label">Option 3</label><input class="qc-input" id="opt2"></div>
+        <div class="col-md-6"><label class="qc-label">Option 4</label><input class="qc-input" id="opt3"></div>
+      </div>
+      <div class="field-error mb-2" id="err-options"></div>
+      <p class="text-muted small mb-3"><i class="fa-solid fa-circle-info"></i> Select the correct option below — it must exactly match one of the four options above.</p>
+      <div class="mb-3">
+        <label class="qc-label">Correct Answer</label>
+        <select class="qc-input" id="correct_answer_select"></select>
+        <div class="field-error" id="err-correct_answer"></div>
+      </div>
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <label class="qc-label">Difficulty</label>
+          <select class="qc-input" id="difficulty"><option>Easy</option><option selected>Medium</option><option>Hard</option></select>
+        </div>
+        <div class="col-md-6">
+          <label class="qc-label">Marks</label>
+          <input class="qc-input" id="marks" type="number" min="1" max="100" value="1">
+          <div class="field-error" id="err-marks"></div>
+        </div>
+      </div>
+      <div class="d-flex gap-2">
+        <button class="btn-gradient flex-grow-1" type="submit" id="submit-btn">Save Question</button>
+        <a href="/faculty/questions/" class="btn-outline-gradient">Cancel</a>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'js/add_question.js' %}"></script>{% endblock %}

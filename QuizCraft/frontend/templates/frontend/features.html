@@ -1,0 +1,16 @@
+{% extends "frontend/base.html" %}
+{% block title %}Features — QuizCraft{% endblock %}
+{% block content %}
+<section class="container py-5">
+  <h1 class="fw-bold mb-4 text-center">Everything you need to <span class="gradient-text">learn adaptively</span></h1>
+  <div class="row g-4">
+    {% for f in "123456" %}{% endfor %}
+    <div class="col-md-4"><div class="qc-card hoverlift h-100"><i class="fa-solid fa-shuffle fs-2 gradient-text mb-3"></i><h5 class="fw-bold">Adaptive Engine</h5><p class="text-muted mb-0">Difficulty shifts Easy ↔ Medium ↔ Hard based on your last answer.</p></div></div>
+    <div class="col-md-4"><div class="qc-card hoverlift h-100"><i class="fa-solid fa-stopwatch fs-2 gradient-text mb-3"></i><h5 class="fw-bold">Real Timer</h5><p class="text-muted mb-0">Server-validated countdown with auto-submit when time runs out.</p></div></div>
+    <div class="col-md-4"><div class="qc-card hoverlift h-100"><i class="fa-solid fa-chart-line fs-2 gradient-text mb-3"></i><h5 class="fw-bold">Live Analytics</h5><p class="text-muted mb-0">Trend charts, subject breakdown, difficulty accuracy — all from real attempts.</p></div></div>
+    <div class="col-md-4"><div class="qc-card hoverlift h-100"><i class="fa-solid fa-trophy fs-2 gradient-text mb-3"></i><h5 class="fw-bold">Leaderboard &amp; Streaks</h5><p class="text-muted mb-0">Ranked by average score; day streak calculated from real attempt dates.</p></div></div>
+    <div class="col-md-4"><div class="qc-card hoverlift h-100"><i class="fa-solid fa-database fs-2 gradient-text mb-3"></i><h5 class="fw-bold">Question Bank</h5><p class="text-muted mb-0">Faculty manage subjects and questions with full CRUD, backed by MongoDB.</p></div></div>
+    <div class="col-md-4"><div class="qc-card hoverlift h-100"><i class="fa-solid fa-shield-halved fs-2 gradient-text mb-3"></i><h5 class="fw-bold">Real Auth</h5><p class="text-muted mb-0">Hashed passwords, token sessions, and server-side role enforcement.</p></div></div>
+  </div>
+</section>
+{% endblock %}

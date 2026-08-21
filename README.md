@@ -326,38 +326,118 @@ by subject) → Analytics (score by subject, pass/fail split, attempts over
 time, difficulty distribution, top students) → Profile (question/subject/
 student/attempt counts, all live).
 
-## 14. Troubleshooting
+🛠️ Troubleshooting
+MongoDB connection error
 
-- **"Could not connect to MongoDB" on startup** — start your local
-  `mongod`, or fix `MONGO_URI`/`MONGO_DB_NAME` in `.env`. The app refuses
-  to silently fall back to SQLite for application data.
-- **Empty dashboard/analytics right after install** — run
-  `python manage.py seed_data`, then log in and take a quiz (or use the
-  sample student account) to generate real attempt data.
-- **Static files 404 in production** — run
-  `python manage.py collectstatic` and make sure your web server serves
-  `STATIC_ROOT`.
-- **CORS errors calling the API from a different origin** — set
-  `CORS_ALLOWED_ORIGINS` in `.env`; in `DEBUG=True` all origins are
-  already allowed for local development.
-- **Google Sign-In** — not configured by default; the login/register
-  pages simply don't render a Google button unless `GOOGLE_CLIENT_ID` is
-  set. There is no fake "Sign in with Google" UI pretending to work.
+Check:
 
-## 15. Running Tests
+MONGO_URI
+MONGO_DB_NAME
 
-```bash
-# Logic test suite (in-memory MongoDB, no server required)
-USE_MONGOMOCK=True python manage.py test core.tests_logic -v 2
+For local MongoDB, make sure mongod is running.
 
-# Django system check
+Empty dashboard
+
+Run:
+
+python manage.py seed_data
+
+Then login and attempt a quiz so that real attempt data is generated.
+
+Static files not loading
+
+Run:
+
+python manage.py collectstatic
+
+when preparing a production deployment.
+
+CORS error
+
+Configure:
+
+CORS_ALLOWED_ORIGINS=
+
+according to the frontend/API deployment origin.
+
+Google Sign-In
+
+Google Sign-In is not configured by default.
+
+If required, provide your own Google OAuth credentials and configure the appropriate environment variables.
+
+📦 Useful Django Commands
+Start server
+python manage.py runserver
+Check project
 python manage.py check
-```
+Create migrations
+python manage.py makemigrations
+Apply migrations
+python manage.py migrate
+Seed data
+python manage.py seed_data
+Run tests
+python manage.py test
+🔄 Git Commands
 
-## 16. What You Need to Provide
+Check changes:
 
-- A running MongoDB instance (local `mongod` or an Atlas connection
-  string) — this is the one piece of infrastructure the project can't
-  supply for you.
-- A real `SECRET_KEY` and `DEBUG=False` before any real deployment.
-- If you want Google Sign-In, your own `GOOGLE_CLIENT_ID`.
+git status
+
+Add changes:
+
+git add .
+
+Commit:
+
+git commit -m "Update QuizCraft"
+
+Push:
+
+git push
+🎯 Project Objectives
+
+QuizCraft aims to provide an interactive technical assessment platform for:
+
+MCA students
+Computer science students
+Placement preparation
+Technical aptitude preparation
+Interview preparation
+Subject-wise practice
+Adaptive learning
+🚧 Future Enhancements
+
+Possible future improvements include:
+
+Google OAuth authentication
+Email verification
+Password reset through email
+More question categories
+Advanced recommendation engine
+AI-generated questions
+Coding challenges
+Real-time faculty monitoring
+Production deployment
+Docker support
+Cloud database deployment
+Advanced student performance prediction
+👩‍💻 Developer
+Bhumika Patil
+
+GitHub:
+
+https://github.com/Bhumika1604
+
+Project Repository:
+
+https://github.com/Bhumika1604/QuizCraft
+
+📄 License
+
+This project is developed for educational and academic purposes.
+
+⭐ Support
+
+If you find this project useful, consider giving the repository a ⭐ on GitHub.
